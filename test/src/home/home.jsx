@@ -30,7 +30,7 @@ export function Home() {
 
             <div className="particles">
               <span className="block"></span>
-              <h1>Particles fun</h1>
+              <h1>Particles</h1>
             </div>
 
             <div className="game">
