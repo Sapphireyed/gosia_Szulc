@@ -22,6 +22,15 @@
     flex-direction: column;
     gap: 8px;
 
+    .about,
+    .experience,
+    .education,
+    .skills,
+    .particles,
+    .game {
+      padding-left: 28px;
+    }
+
     .about {
       width: 100%;
       position: relative;
@@ -29,12 +38,13 @@
       align-items: center;
       height: 50px;
 
+
       .block {
         width: 0%;
         height: inherit;
         background: #ffb510;
         position: absolute;
-        animation: mainBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
         display: flex;
       }
 
@@ -48,7 +58,7 @@
         -webkit-animation: mainFadeIn 1.5s forwards;
         -o-animation: mainFadeIn 1.5s forwards;
         animation: mainFadeIn 1.5s forwards;
-        animation-delay: 1.2s;
+        animation-delay: .8s;
         opacity: 0;
         display: flex;
         align-items: baseline;
@@ -86,16 +96,16 @@
       .block {
         width: 0%;
         height: inherit;
-        background: #e91e63;
+        background: #387ADF;
         position: absolute;
-        animation: secBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
         animation-delay: 1.5s;
         display: flex;
       }
 
       h1 {
         animation: secFadeIn 2s forwards;
-        animation-delay: 2.7s;
+        animation-delay: 2.3s;
         opacity: 0;
         font-weight: 400;
         font-family: 'Lato';
@@ -119,8 +129,8 @@
         height: inherit;
         background: #ffb510;
         position: absolute;
-        animation: mainBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
-        animation-delay: 4s;
+        animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 3s;
         display: flex;
       }
 
@@ -134,7 +144,7 @@
         -webkit-animation: mainFadeIn 1.5s forwards;
         -o-animation: mainFadeIn 1.5s forwards;
         animation: mainFadeIn 1.5s forwards;
-        animation-delay: 5.7s;
+        animation-delay: 3.8s;
         opacity: 0;
         display: flex;
         align-items: baseline;
@@ -172,10 +182,10 @@
       .block {
         width: 0%;
         height: inherit;
-        background: #e91e63;
+        background: #387ADF;
         position: absolute;
-        animation: secBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
-        animation-delay: 6s;
+        animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 4.5s;
         display: flex;
       }
 
@@ -189,7 +199,7 @@
         -webkit-animation: secFadeIn 1.5s forwards;
         -o-animation: secFadeIn 1.5s forwards;
         animation: secFadeIn 1.5s forwards;
-        animation-delay: 7.7s;
+        animation-delay: 5.3s;
         opacity: 0;
         display: flex;
         align-items: baseline;
@@ -229,8 +239,8 @@
         height: inherit;
         background: #ffb510;
         position: absolute;
-        animation: mainBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
-        animation-delay: 8s;
+        animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 6s;
         display: flex;
       }
 
@@ -244,7 +254,7 @@
         -webkit-animation: mainFadeIn 1.5s forwards;
         -o-animation: mainFadeIn 1.5s forwards;
         animation: mainFadeIn 1.5s forwards;
-        animation-delay: 9.5s;
+        animation-delay: 6.8s;
         opacity: 0;
         display: flex;
         align-items: baseline;
@@ -282,10 +292,10 @@
       .block {
         width: 0%;
         height: inherit;
-        background: #e91e63;
+        background: #387ADF;
         position: absolute;
-        animation: secBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
-        animation-delay: 9.5s;
+        animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 7.5s;
         display: flex;
       }
 
@@ -299,7 +309,7 @@
         -webkit-animation: secFadeIn 1.5s forwards;
         -o-animation: secFadeIn 1.5s forwards;
         animation: secFadeIn 1.5s forwards;
-        animation-delay: 10.7s;
+        animation-delay: 8.3s;
         opacity: 0;
         display: flex;
         align-items: baseline;
@@ -335,34 +345,34 @@
 @keyframes mainBlock {
   0% {
     width: 0%;
-    left: 0;
+    right: 0;
 
   }
   50% {
     width: 100%;
-    left: 0;
+    right: 0;
 
   }
   100% {
-    width: 0;
-    left: 100%;
+    width: 5%;
+    right: 95%;
   }
 }
 
 @keyframes secBlock {
   0% {
     width: 0%;
-    left: 0;
+    right: 0;
 
   }
   50% {
     width: 100%;
-    left: 0;
+    right: 0;
 
   }
   100% {
-    width: 0;
-    left: 100%;
+    width: 5%;
+    right: 95%;
   }
 }
 
