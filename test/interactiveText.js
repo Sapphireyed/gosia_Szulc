@@ -6,13 +6,39 @@ canvas.height = window.innerHeight;
 let particlesArray = [];
 const numberOfParticles = 900;
 
-ctx.fillStyle = '#FF5F26';
-ctx.font = '15px Verdana';
-ctx.fillText('Gosia', 0, 30);
+// ctx.fillStyle = '#FF5F26';
+// ctx.font = '15px Verdana';
+// ctx.fillText('Gosia', 0, 30);
+
+const fontMetrics = ctx.measureText('H');
+const ascent = fontMetrics.actualBoundingBoxAscent;
+const descent = fontMetrics.actualBoundingBoxDescent;
+console.log(fontMetrics.actualBoundingBoxDescent, ascent, descent);
+
+let x = 10
+
+ctx.save()
+ctx.fillStyle = 'white';
+ctx.font = '17px Verdana';
+ctx.fillText('H', x, 20);
+ctx.scale(2, 2)
+ctx.restore()
 
 ctx.fillStyle = 'white';
-ctx.font = '15px Verdana';
-ctx.fillText('Szulc', 0, 50);
+ctx.font = '18px Verdana';
+ctx.fillText('E', x, 37);
+
+ctx.fillStyle = 'white';
+ctx.font = '19px Verdana';
+ctx.fillText('L', x, 54);
+
+ctx.fillStyle = 'white';
+ctx.font = '19px Verdana';
+ctx.fillText('L', x, 71);
+
+ctx.fillStyle = 'white';
+ctx.font = '19px Verdana';
+ctx.fillText('O', x, 88);
 
 const textCoordinates = ctx.getImageData(0, 0, 300, 100);
 
@@ -63,50 +89,69 @@ function handleTouchEnd(event) {
 }
 
 class Particle {
-  constructor(x, y, color) {
-    this.x = x;
-    this.y = y;
+  constructor(x, y, finalX, finalY, color) {
+    this.x = Math.round(x);
+    this.y = Math.round(y);
+    this.finalX = finalX;
+    this.finalY = finalY;
     this.size = 3;
-    this.baseX = this.x;
-    this.baseY = this.y;
+    this.baseX = this.finalX;
+    this.baseY = this.finalY;
     this.density = Math.random() * 70;
     this.color = color;
     this.baseColor = this.color;
   }
 
+  move() {
+    if (this.x >= this.finalX) {
+      this.x -= 3
+    }
+    if (this.x <= this.finalX) {
+      this.x += 3
+    }
+    if (this.y <= this.finalY) {
+      this.y += 3
+    }
+    if (this.y >= this.finalY) {
+      this.y -= 3
+    }
+  }
+
   update() {
-    let dx = mouse.x - this.x;
-    let dy = mouse.y - this.y;
-    let distance = Math.hypot(dx, dy);
-    // to decide which direction the particles should move
-    let forceDirectionX = dx / distance
-    let forceDirectionY = dy / distance
-    // we want particles within radius to move away from it. The closer to the mouse they are, the quicker they should move
-    const force = (mouse.radius - distance) / mouse.radius;
-    // final speed and direction for each particle
-    let finalMovementX = forceDirectionX * force * this.density
-    let finalMovementY = forceDirectionY * force * this.density
+    if (window.hello) {
+      let dx = mouse.x - this.finalX;
+      let dy = mouse.y - this.finalY;
+      let distance = Math.hypot(dx, dy);
+      // to decide which direction the particles should move
+      let forceDirectionX = dx / distance
+      let forceDirectionY = dy / distance
+      // we want particles within radius to move away from it. The closer to the mouse they are, the quicker they should move
+      const force = (mouse.radius - distance) / mouse.radius;
+      // final speed and direction for each particle
+      let finalMovementX = forceDirectionX * force * this.density
+      let finalMovementY = forceDirectionY * force * this.density
 
-    if (distance < mouse.radius) {
-      this.x -= finalMovementX;
-      this.y -= finalMovementY;
-    } else if (distance > mouse.radius && distance < mouse.radius + 50) {
-      if (this.y > canvas.height  * 0.4) {
-        this.color = 'rgba(255,95,38)';
-      } else {
-        this.color = 'rgba(255,255,255, 1)';
-      }
+      if (distance < mouse.radius) {
+        this.finalX -= finalMovementX;
+        this.finalY -= finalMovementY;
+      } else if (distance > mouse.radius && distance < mouse.radius + 50) {
+        if (this.finalY > canvas.height  * 0.4) {
+          this.color = 'rgba( 240, 128, 128,)';
+        } else {
+          this.color = 'rgba( 173, 216, 230, 1)';
+        }
 
-    } else {  // make particles move back to their original position if they're not already on it
-      if (this.x !== this.baseX) {
-        let dx = this.x - this.baseX;
-        this.x -= dx/10;
+      } else {  // make particles move back to their original position if they're not already on it
+        if (this.finalX !== this.baseX) {
+          let dx = this.finalX - this.baseX;
+          this.finalX -= dx/10;
+        }
+        if (this.finalY !== this.baseY) {
+          let dy = this.finalY - this.baseY;
+          this.finalY -= dy/10;
+        }
+        this.color = this.baseColor;
       }
-      if (this.y !== this.baseY) {
-        let dy = this.y - this.baseY;
-        this.y -= dy/10;
-      }
-      this.color = this.baseColor;
     }
   }
   draw() {
@@ -131,16 +176,24 @@ function init() {
       if (alpha > 50) {
         let positionX = x;
         let positionY = y;
-        particlesArray.push(new Particle(positionX * 10, positionY * 10, color));
+        let posx = Math.random() * (0, canvas.width);
+        let posy = Math.random() * (0, canvas.height);
+        particlesArray.push(new Particle(posx, posy, positionX * 10, positionY * 10, color));
       }
     }
   }
 }
 init();
 
+setTimeout(() => {
+  window.hello = true;
+}, 5000);
+
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   particlesArray.forEach(particle => {
+    particle.move();
     particle.update();
     particle.draw();
   });
@@ -157,8 +210,8 @@ function connect() {
       let dy = particle.y - particlesArray[j].y;
       let distance = Math.hypot(dx, dy);
 
-      if (distance < 25) {
-        opacity = 1 - distance / 25;
+      if (distance < 30) {
+        opacity = 1 - distance / 30;
         ctx.strokeStyle = particle.color.slice(0, -2) + opacity;
         ctx.lineWidth = 2;
         ctx.beginPath();
