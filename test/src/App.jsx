@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Home } from './home/home.jsx';
+import { Header } from './header/header.jsx';
 import './css.scss'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <Home />
     </>
   )
