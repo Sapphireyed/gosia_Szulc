@@ -1,7 +1,11 @@
+$grey: #242424;
+
 @import './home/home.scss';
 @import './header/header.scss';
 
+
+
 body {
-  background-color: #242424;
+  background-color: $grey;
   font-family: system-ui;
 }

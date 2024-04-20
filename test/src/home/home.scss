@@ -12,6 +12,8 @@ $yellow: #ffb510;
   background: #232323;
   padding: 1.5rem;
   height: 75vh;
+  position: relative;
+  overflow-x: hidden;
 
   display: flex;
   justify-content: center;
@@ -21,6 +23,18 @@ $yellow: #ffb510;
   position: relative;
   border-radius: 12px 12px 0 0;
 
+  .overlay {
+    position: absolute;
+    background-color: $grey;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 0 20px black;
+    z-index: 999;
+    right: -100%;
+    transition: right 0.7s;
+  }
+
   .box {
     width: 100%;
     height: 250px;
@@ -29,6 +43,15 @@ $yellow: #ffb510;
     justify-content: center;
     flex-direction: column;
     gap: 8px;
+    transition: margin 1s;
+
+    .experience,
+    .education,
+    .skills,
+    .particles,
+    .game {
+      margin-top: -10px;
+    }
 
     .about,
     .experience,
@@ -36,7 +59,7 @@ $yellow: #ffb510;
     .skills,
     .particles,
     .game {
-      padding-left: 28px;
+      padding-left: 32px;
       width: 100%;
       position: relative;
       display: flex;
@@ -54,7 +77,7 @@ $yellow: #ffb510;
         opacity: 0;
         font-weight: 400;
         color: #ffffff;
-        font-size: 32px;
+        font-size: 28px;
         text-transform: uppercase;
         letter-spacing: 5px;
         -webkit-animation: mainFadeIn 1.5s forwards;
@@ -104,8 +127,6 @@ $yellow: #ffb510;
     }
 
     .experience {
-      margin-top: -10px;
-
       .block {
         background: $blue;
         animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
@@ -119,8 +140,6 @@ $yellow: #ffb510;
     }
 
     .education {
-      margin-top: -10px;
-
       .block {
         background: $yellow;
         animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
@@ -143,8 +162,6 @@ $yellow: #ffb510;
     }
 
     .skills {
-      margin-top: -10px;
-
       .block {
         background: $blue;
         animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
@@ -168,8 +185,6 @@ $yellow: #ffb510;
     }
 
     .particles {
-      margin-top: -10px;
-
       .block {
         background: $yellow;
         animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
@@ -192,8 +207,6 @@ $yellow: #ffb510;
     }
 
     .game {
-      margin-top: -10px;
-
       .block {
         background: $blue;
         animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
