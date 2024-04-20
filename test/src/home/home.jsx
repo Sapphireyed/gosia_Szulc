@@ -1,33 +1,27 @@
 import { useRef } from 'react'
 
-export function Home() {
-  const overlayRef = useRef(null);
-  const blockAboutRef = useRef(null);
+export function Home(props) {
+  const { overlayRef, setIsAboutPage, setIsHomepage } = props;
 
   const handleAboutClick = () => {
     if (overlayRef.current) {
-      blockAboutRef.current.width = '100% !important';
-      blockAboutRef.current.right = '3% !important';
       overlayRef.current.style.right = '0';
-      //boxRef.current.style.marginLeft = '-100%';
 
       setTimeout(() => {
         overlayRef.current.style.right = '-100%';
-        blockAboutRef.current.width = '5% !important';
-        blockAboutRef.current.right = '95% !important';
+        setIsAboutPage(prevState => true);
+        setIsHomepage(prevState => false)
       }, 700);
     }
   };
 
   return (
     <>
-      <div className="container">
-        <div className="overlay" ref={overlayRef}></div>
         <div className="box">
           <div className='nav'>
 
             <div className="about">
-              <span className="block" ref={blockAboutRef}></span>
+              <span className="block"></span>
               <h1 onClick={handleAboutClick}>About</h1>
             </div>
 
@@ -58,7 +52,6 @@ export function Home() {
 
           </div>
         </div>
-      </div>
     </>
   )
 }
