@@ -212,8 +212,8 @@ function connect() {
       let dy = particle.y - particlesArray[j].y;
       let distance = Math.hypot(dx, dy);
 
-      if (distance < 30) {
-        opacity = 1 - distance / 30;
+      if (distance < 40) {
+        opacity = 1 - distance / 40;
         ctx.strokeStyle = particle.color.slice(0, -2) + opacity;
         ctx.lineWidth = 2;
         ctx.beginPath();

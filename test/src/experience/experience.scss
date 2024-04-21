@@ -1,0 +1,200 @@
+.experiencePage {
+  .item.lc {
+    img {
+      margin-bottom: -18px;
+    }
+  }
+
+  .item {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+
+    h2 span {
+      color: $blue;
+    }
+
+    .details {
+      width: 100%;
+      color: rgba(255, 255, 255, .6);
+      font-size: 14px;
+      line-height: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      p:nth-child(odd) span,
+      p:nth-child(even) span {
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+
+      p:nth-child(odd) span {
+        color: $yellow;
+      }
+
+      p:nth-child(even) span {
+        color: $blue;
+      }
+
+      p:hover span {
+        display: inline-block;
+        transform: rotateX(360deg) scale(1.4);
+        transition: 1s;
+      }
+    }
+  }
+}
+
+.slick-slider {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  .slick-prev {
+    display: none !important;
+  }
+
+  .slick-next {
+    display: none !important;
+  }
+
+  .slick-slide {
+    margin: 0 auto;
+    padding: 0;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .experiencePage {
+    img {
+      width: 75%;
+    }
+
+    .item {
+      padding-top: 10px;
+
+      .logo {
+        margin-top: 25px;
+        margin-bottom: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          font-size: 18px;
+          color: white;
+        }
+
+        img {
+          width: 60px;
+        }
+      }
+
+      p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, .6)
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .details p {
+        font-size: 12px;
+      }
+    }
+
+    .slick-slider {
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+
+      .slick-track {
+        //transform: translate3d(-860px, 0px, 0px) !important;
+      }
+
+      .slick-slide {
+        height: 500px;
+        overflow-y: scroll;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .experiencePage {
+    img {
+      width: 45%;
+    }
+
+    .item.lc {
+      img {
+        margin-bottom: -68px;
+      }
+    }
+
+    .item {
+      .logo {
+        margin-top: 85px;
+        margin-bottom: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+
+        img {
+          width: 90px;
+        }
+
+        p {
+          font-size: 32px;
+        }
+      }
+    }
+
+    .slick-slider {
+      width: 75vw;
+
+      .slick-prev {
+        display: block !important;
+        left: 25px !important;
+        z-index: 999999;
+      }
+
+      .slick-next {
+        display: block !important;
+        right: 25px !important;
+      }
+
+      .slick-slide {
+        margin: 0 auto;
+        padding: 0 48px;
+        margin-bottom: 50px;
+
+        .details {
+          width: 75%;
+          font-size: 16px;
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+
+}
+
+@keyframes scale {
+  0% {
+    margin-left: -6px;
+  }
+  50% {
+    margin-left: 6px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
