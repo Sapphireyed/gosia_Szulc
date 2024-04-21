@@ -6,7 +6,7 @@ export const Overlay = forwardRef(({ setCurrentPage, currentPage }, ref) => {
 
   function handleBurger(e) {
     e.preventDefault();
-    fn.animateOverlay(ref, setCurrentPage, 'Homepage');
+    fn.animateOverlay(e, ref, setCurrentPage, 'Homepage');
   }
 
   return (

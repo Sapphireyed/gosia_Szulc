@@ -52,3 +52,9 @@ body {
   border-radius: 12px 12px 0 0;
   position: relative;
 }
+
+@media screen and (min-width: 720px) {
+  .overlay {
+    width: calc(100% - 300px);
+  }
+}

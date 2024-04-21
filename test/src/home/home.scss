@@ -40,6 +40,32 @@ $yellow: #ffb510;
       margin-top: -10px;
     }
 
+    .about:hover h1,
+    .education:hover h1,
+    .particles:hover h1 {
+      color: $yellow;
+      transition: color .7s;
+    }
+
+    .about.selected h1,
+    .education.selected h1,
+    .particles.selected h1 {
+      color: $yellow;
+    }
+
+    .experience:hover h1,
+    .skills:hover h1,
+    .game:hover h1 {
+      color: $blue;
+      transition: color .7s;
+    }
+
+    .experience.selected h1,
+    .skills.selected h1,
+    .game.selected h1 {
+      color: $blue;
+    }
+
     .about,
     .experience,
     .education,
@@ -52,6 +78,7 @@ $yellow: #ffb510;
       display: flex;
       align-items: center;
       height: 50px;
+      cursor: pointer;
 
       .block {
         width: 0%;
@@ -63,7 +90,7 @@ $yellow: #ffb510;
       h1 {
         opacity: 0;
         font-weight: 400;
-        color: rgba(255, 255, 255, .8);
+        color: rgba(255, 255, 255, .6);
         font-size: 28px;
         text-transform: uppercase;
         letter-spacing: 5px;
@@ -91,10 +118,15 @@ $yellow: #ffb510;
       }
     }
 
+    // .item:hover h1 {
+    //   color: #fff;
+    //   transition: color 1s;
+    // }
+
     .about {
       .block {
         background: $yellow;
-        animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards; ;
       }
 
       h1 {
@@ -251,6 +283,23 @@ $yellow: #ffb510;
 }
 
 @keyframes secBlock {
+  0% {
+    width: 0%;
+    right: 0;
+
+  }
+  50% {
+    width: 100%;
+    right: 0;
+
+  }
+  100% {
+    width: 5%;
+    right: 95%;
+  }
+}
+
+@keyframes slide {
   0% {
     width: 0%;
     right: 0;
