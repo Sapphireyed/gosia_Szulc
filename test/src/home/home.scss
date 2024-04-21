@@ -364,5 +364,6 @@ $yellow: #ffb510;
 @media screen and (min-width: 720px) {
   .container {
     max-width: 300px;
+    min-width: 300px;
   }
 }
