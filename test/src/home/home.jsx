@@ -1,28 +1,16 @@
-import { useRef } from 'react'
+import * as fn from '../functions.js';
 
 export function Home(props) {
-  const { overlayRef, setIsAboutPage, setIsHomepage } = props;
-
-  const handleAboutClick = () => {
-    if (overlayRef.current) {
-      overlayRef.current.style.right = '0';
-
-      setTimeout(() => {
-        overlayRef.current.style.right = '-100%';
-        setIsAboutPage(prevState => true);
-        setIsHomepage(prevState => false)
-      }, 700);
-    }
-  };
+  const { overlayRef, currentPage, setCurrentPage } = props;
 
   return (
     <>
         <div className="box">
-          <div className='nav'>
+          <div className={`nav ${currentPage.firstRun ? 'animated' : 'static'}`}>
 
             <div className="about">
               <span className="block"></span>
-              <h1 onClick={handleAboutClick}>About</h1>
+              <h1 onClick={() => fn.animateOverlay(overlayRef, setCurrentPage, 'About')}>About</h1>
             </div>
 
             <div className="experience">
