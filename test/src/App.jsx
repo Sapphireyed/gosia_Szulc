@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Home } from './home/home.jsx';
 import { Header } from './header/header.jsx';
 import { About } from './about/about.jsx';
+import burger from './assets/burger.svg';
 import * as fn from './functions.js';
 import './css.scss'
 
@@ -27,7 +28,7 @@ function App() {
               <button
                 onClick={(e) => handleBurger(e)}
                 className='burger-btn'><i className="fa fa-arrow-left back-icon"/>
-                <span style={{ color: 'white', fontSize: 16, marginLeft: -5}}>Back</span>
+                <img src={burger} />
               </button>
           }
         </div>
