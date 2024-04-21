@@ -4,6 +4,7 @@ import { Header } from './header/header.jsx';
 import { About } from './about/about.jsx';
 import { Overlay } from './overlay/overlay.jsx'
 import { Desktop } from './desktop/desktop.jsx';
+import { Experience } from './experience/experience.jsx';
 import * as fn from './functions.js';
 import './css.scss'
 
@@ -16,12 +17,17 @@ function App() {
 
   const pages = {
     Home: Home,
-    About: About
+    About: About,
+    Experience: Experience
   }
 
   return (
     <>
-      <Header />
+      <Header
+        ref={overlayRef}
+        overlayRef={overlayRef}
+        setCurrentPage={setCurrentPage}
+      />
 
       <div className='wrapper'>
         <Overlay
@@ -60,6 +66,7 @@ function App() {
               overlayRef={overlayRef}
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
+              pages={pages}
             /> :
             null
         }

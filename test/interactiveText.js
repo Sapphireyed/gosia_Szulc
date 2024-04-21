@@ -15,32 +15,40 @@ const ascent = fontMetrics.actualBoundingBoxAscent;
 const descent = fontMetrics.actualBoundingBoxDescent;
 console.log(fontMetrics.actualBoundingBoxDescent, ascent, descent);
 
-let x = 10
+let x = 13
 
-ctx.save()
-ctx.fillStyle = 'white';
-ctx.font = '17px Verdana';
-ctx.fillText('H', x, 20);
-ctx.scale(2, 2)
-ctx.restore()
-
-ctx.fillStyle = 'white';
-ctx.font = '18px Verdana';
-ctx.fillText('E', x, 37);
+// ctx.save()
+// ctx.fillStyle = 'white';
+// ctx.font = '17px Verdana';
+// ctx.fillText('H', x, 20);
+// ctx.scale(2, 2);
+// ctx.restore();
 
 ctx.fillStyle = 'white';
-ctx.font = '19px Verdana';
-ctx.fillText('L', x, 54);
+ctx.font = '28px Verdana';
+ctx.fillText('HELLO', x, window.innerHeight * 0.85 / 18);
 
 ctx.fillStyle = 'white';
-ctx.font = '19px Verdana';
-ctx.fillText('L', x, 71);
+ctx.font = '28px Verdana';
+ctx.fillText('WORLD', x, (window.innerHeight * 0.85 / 18) + 30);
 
-ctx.fillStyle = 'white';
-ctx.font = '19px Verdana';
-ctx.fillText('O', x, 88);
+// ctx.fillStyle = 'white';
+// ctx.font = '18px Verdana';
+// ctx.fillText('E', x, 37);
 
-const textCoordinates = ctx.getImageData(0, 0, 300, 100);
+// ctx.fillStyle = 'white';
+// ctx.font = '19px Verdana';
+// ctx.fillText('L', x, 54);
+
+// ctx.fillStyle = 'white';
+// ctx.font = '19px Verdana';
+// ctx.fillText('L', x, 71);
+
+// ctx.fillStyle = 'white';
+// ctx.font = '19px Verdana';
+// ctx.fillText('O', x, 88);
+
+const textCoordinates = ctx.getImageData(0, 0, 500, 1000);
 
 window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
@@ -51,7 +59,7 @@ window.addEventListener('resize', () => {
 const mouse = {
   x: undefined,
   y: undefined,
-  radius: 50
+  radius: 200
 };
 
 canvas.addEventListener('mousemove', handleMouseMove);
@@ -104,16 +112,16 @@ class Particle {
 
   move() {
     if (this.x >= this.finalX) {
-      this.x -= 3
+      this.x -= 12
     }
     if (this.x <= this.finalX) {
-      this.x += 3
+      this.x += 12
     }
     if (this.y <= this.finalY) {
-      this.y += 3
+      this.y += 6
     }
     if (this.y >= this.finalY) {
-      this.y -= 3
+      this.y -= 6
     }
   }
 
@@ -135,10 +143,10 @@ class Particle {
         this.finalX -= finalMovementX;
         this.finalY -= finalMovementY;
       } else if (distance > mouse.radius && distance < mouse.radius + 50) {
-        if (this.finalY > canvas.height  * 0.4) {
-          this.color = 'rgba( 240, 128, 128,)';
+        if (this.finalY > canvas.height  * 0.5) {
+          this.color = 'rgba( 56,122,223,)';
         } else {
-          this.color = 'rgba( 173, 216, 230, 1)';
+          this.color = 'rgba( 255,	181,	16, 1)';
         }
 
       } else {  // make particles move back to their original position if they're not already on it
@@ -183,11 +191,6 @@ function init() {
     }
   }
 }
-init();
-
-setTimeout(() => {
-  window.hello = true;
-}, 5000);
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -200,7 +203,6 @@ function animate() {
   connect();
   requestAnimationFrame(animate);
 }
-animate();
 
 function connect() {
   let opacity = 1;
@@ -222,3 +224,14 @@ function connect() {
     }
   });
 }
+
+setTimeout(() => {
+  canvas.style.opacity = 1;
+  canvas.style.transition = '1s'
+  init();
+  animate();
+
+  setTimeout(() => {
+    window.hello = true;
+  }, 5000);
+}, 6000);

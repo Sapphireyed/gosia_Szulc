@@ -121,3 +121,13 @@
     text-shadow: 0 0 8px rgba(255, 255, 255, .3);
   }
 }
+
+@media screen and (min-width: 720px) {
+  .header {
+    cursor: pointer;
+  }
+
+  .header h4 {
+    font-size: 56px;
+  }
+}

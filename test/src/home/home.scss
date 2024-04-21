@@ -94,10 +94,10 @@ $yellow: #ffb510;
         font-size: 28px;
         text-transform: uppercase;
         letter-spacing: 5px;
-        -webkit-animation: mainFadeIn 1.5s forwards;
-        -o-animation: mainFadeIn 1.5s forwards;
-        animation: mainFadeIn 1.5s forwards;
-        animation-delay: .8s;
+        -webkit-animation: mainFadeIn 1s forwards;
+        -o-animation: mainFadeIn 1s forwards;
+        animation: mainFadeIn 1s forwards;
+        animation-delay: .7s;
         opacity: 0;
         display: flex;
         align-items: baseline;
@@ -126,125 +126,87 @@ $yellow: #ffb510;
     .about {
       .block {
         background: $yellow;
-        animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards; ;
+        animation: mainBlock 0.8s cubic-bezier(.74, .06, .4, .92) forwards; ;
       }
 
       h1 {
-        -webkit-animation: mainFadeIn 1.5s forwards;
-        -o-animation: mainFadeIn 1.5s forwards;
-        animation: mainFadeIn 1.5s forwards;
-        animation-delay: .8s;
-
-        span {
-          background: #ffb510;
-          -webkit-animation: load 0.6s cubic-bezier(.74, .06, .4, .92) forwards;
-          animation: popIn 0.8s cubic-bezier(.74, .06, .4, .92) forwards;
-          animation-delay: 2s;
-
-        }
+        -webkit-animation: mainFadeIn .8s forwards;
+        -o-animation: mainFadeIn .8s forwards;
+        animation: mainFadeIn .8s forwards;
+        animation-delay: .6s;
       }
     }
 
     .experience {
       .block {
         background: $blue;
-        animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
-        animation-delay: 1.5s;
+        animation: secBlock .8s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 1s;
       }
 
       h1 {
         animation: secFadeIn 2s forwards;
-        animation-delay: 2.3s;
+        animation-delay: 1.4s;
       }
     }
 
     .education {
       .block {
         background: $yellow;
-        animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
-        animation-delay: 3s;
+        animation: mainBlock 0.8s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 2s;
       }
 
       h1 {
-        -webkit-animation: mainFadeIn 1.5s forwards;
-        -o-animation: mainFadeIn 1.5s forwards;
-        animation: mainFadeIn 1.5s forwards;
-        animation-delay: 3.8s;
-
-        span {
-          -webkit-animation: load 0.6s cubic-bezier(.74, .06, .4, .92) forwards;
-          animation: popIn 0.8s cubic-bezier(.74, .06, .4, .92) forwards;
-          animation-delay: 2s;
-
-        }
+        -webkit-animation: mainFadeIn 0.8s forwards;
+        -o-animation: mainFadeIn 0.8s forwards;
+        animation: mainFadeIn 0.8s forwards;
+        animation-delay: 2.4s;
       }
     }
 
     .skills {
       .block {
         background: $blue;
-        animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
-        animation-delay: 4.5s;
+        animation: secBlock .8s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 3s;
       }
 
       h1 {
-        -webkit-animation: secFadeIn 1.5s forwards;
-        -o-animation: secFadeIn 1.5s forwards;
-        animation: secFadeIn 1.5s forwards;
-        animation-delay: 5.3s;
-
-        span {
-          background: #ffb510;
-          -webkit-animation: load 0.6s cubic-bezier(.74, .06, .4, .92) forwards;
-          animation: popIn 0.8s cubic-bezier(.74, .06, .4, .92) forwards;
-          animation-delay: 2s;
-
-        }
+        -webkit-animation: secFadeIn 0.8s forwards;
+        -o-animation: secFadeIn .8s forwards;
+        animation: secFadeIn .8s forwards;
+        animation-delay: 3.4s;
       }
     }
 
     .particles {
       .block {
         background: $yellow;
-        animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
-        animation-delay: 6s;
+        animation: mainBlock .8s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 4s;
       }
 
       h1 {
-        -webkit-animation: mainFadeIn 1.5s forwards;
-        -o-animation: mainFadeIn 1.5s forwards;
-        animation: mainFadeIn 1.5s forwards;
-        animation-delay: 6.8s;
-
-        span {
-          background: #ffb510;
-          -webkit-animation: load 0.6s cubic-bezier(.74, .06, .4, .92) forwards;
-          animation: popIn 0.8s cubic-bezier(.74, .06, .4, .92) forwards;
-          animation-delay: 2s;
-        }
+        -webkit-animation: mainFadeIn .8s forwards;
+        -o-animation: mainFadeIn .8s forwards;
+        animation: mainFadeIn .8s forwards;
+        animation-delay: 4.4s;
       }
     }
 
     .game {
       .block {
         background: $blue;
-        animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
-        animation-delay: 7.5s;
+        animation: secBlock .8s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 5s;
       }
 
       h1 {
-        -webkit-animation: secFadeIn 1.5s forwards;
-        -o-animation: secFadeIn 1.5s forwards;
-        animation: secFadeIn 1.5s forwards;
-        animation-delay: 8.3s;
-
-        span {
-          background: #ffb510;
-          -webkit-animation: load 0.6s cubic-bezier(.74, .06, .4, .92) forwards;
-          animation: popIn 0.8s cubic-bezier(.74, .06, .4, .92) forwards;
-          animation-delay: 2s;
-
-        }
+        -webkit-animation: secFadeIn .8s forwards;
+        -o-animation: secFadeIn .8s forwards;
+        animation: secFadeIn .8s forwards;
+        animation-delay: 5.4s;
       }
     }
   }

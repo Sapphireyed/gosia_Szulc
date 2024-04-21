@@ -4,6 +4,7 @@ export function Home(props) {
   const { overlayRef, currentPage, setCurrentPage } = props;
 
   function handleNavItemClick(e, name) {
+    document.querySelector('#canvas1').classList.add('hidden');
     fn.animateOverlay(e, overlayRef, setCurrentPage, name)
   }
 

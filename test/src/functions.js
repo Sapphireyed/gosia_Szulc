@@ -6,6 +6,7 @@ export function animateOverlay(event, overlayRef, setCurrentPage, pageName) {
 
     setTimeout(() => {
       overlayRef.current.style.right = '-100%';
+
       setCurrentPage(prevState => {
         const newState = {
           ...prevState,
@@ -14,23 +15,11 @@ export function animateOverlay(event, overlayRef, setCurrentPage, pageName) {
         };
         return newState;
       });
+
+      if (pageName === 'Desktop') {
+        document.querySelector('#canvas1')?.classList.remove('hidden');
+      }
     }, 700);
-  // } else {
-  //   overlayRef.current.style.right = '0';
-
-  //   setTimeout(() => {
-  //     overlayRef.current.style.right = '-100%';
-  //     setCurrentPage(prevState => {
-  //       const newState = {
-  //         ...prevState,
-  //         name: pageName,
-  //         firstRun: false
-  //       };
-  //       return newState;
-  //     });
-  //   }, 700);
-  // }
-
 }
 
 export function isMobile() {
