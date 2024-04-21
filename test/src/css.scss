@@ -2,7 +2,7 @@ $grey: #242424;
 
 @import './home/home.scss';
 @import './header/header.scss';
-
+@import './about/about.scss';
 
 
 body {
@@ -30,5 +30,5 @@ body {
   border: none;
   border-radius:8px;
   background-color: transparent;
-  box-shadow: 0 0 15px rgba(0,0,0,.5);
+  // box-shadow: 0 0 15px rgba(0,0,0,.5);
 }
