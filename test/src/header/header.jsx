@@ -5,7 +5,8 @@ export function Header() {
   return (
     <>
       <div className="header">
-        Małgorzata
+        <h4>Gosia Szulc</h4>
+        <p>Frontend developer</p>
       </div>
     </>
   )

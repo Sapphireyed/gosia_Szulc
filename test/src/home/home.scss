@@ -9,13 +9,18 @@ $yellow: #ffb510;
 
 .container {
   width: 100%;
-  background: #232323;
   padding: 1.5rem;
-  height: 70vh;
+  height: 75vh;
+  position: relative;
+  overflow-x: hidden;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 0 20px black;
+  z-index:9;
+  position: relative;
+  border-radius: 12px 12px 0 0;
 
   .box {
     width: 100%;
@@ -25,6 +30,41 @@ $yellow: #ffb510;
     justify-content: center;
     flex-direction: column;
     gap: 8px;
+    transition: margin 1s;
+
+    .experience,
+    .education,
+    .skills,
+    .particles,
+    .game {
+      margin-top: -10px;
+    }
+
+    .about:hover h1,
+    .education:hover h1,
+    .particles:hover h1 {
+      color: $yellow;
+      transition: color .7s;
+    }
+
+    .about.selected h1,
+    .education.selected h1,
+    .particles.selected h1 {
+      color: $yellow;
+    }
+
+    .experience:hover h1,
+    .skills:hover h1,
+    .game:hover h1 {
+      color: $blue;
+      transition: color .7s;
+    }
+
+    .experience.selected h1,
+    .skills.selected h1,
+    .game.selected h1 {
+      color: $blue;
+    }
 
     .about,
     .experience,
@@ -32,12 +72,13 @@ $yellow: #ffb510;
     .skills,
     .particles,
     .game {
-      padding-left: 28px;
+      padding-left: 32px;
       width: 100%;
       position: relative;
       display: flex;
       align-items: center;
       height: 50px;
+      cursor: pointer;
 
       .block {
         width: 0%;
@@ -49,8 +90,8 @@ $yellow: #ffb510;
       h1 {
         opacity: 0;
         font-weight: 400;
-        color: #ffffff;
-        font-size: 32px;
+        color: rgba(255, 255, 255, .6);
+        font-size: 28px;
         text-transform: uppercase;
         letter-spacing: 5px;
         -webkit-animation: mainFadeIn 1.5s forwards;
@@ -77,10 +118,15 @@ $yellow: #ffb510;
       }
     }
 
+    // .item:hover h1 {
+    //   color: #fff;
+    //   transition: color 1s;
+    // }
+
     .about {
       .block {
         background: $yellow;
-        animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards; ;
       }
 
       h1 {
@@ -100,8 +146,6 @@ $yellow: #ffb510;
     }
 
     .experience {
-      margin-top: -10px;
-
       .block {
         background: $blue;
         animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
@@ -115,8 +159,6 @@ $yellow: #ffb510;
     }
 
     .education {
-      margin-top: -10px;
-
       .block {
         background: $yellow;
         animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
@@ -139,8 +181,6 @@ $yellow: #ffb510;
     }
 
     .skills {
-      margin-top: -10px;
-
       .block {
         background: $blue;
         animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
@@ -164,8 +204,6 @@ $yellow: #ffb510;
     }
 
     .particles {
-      margin-top: -10px;
-
       .block {
         background: $yellow;
         animation: mainBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
@@ -188,8 +226,6 @@ $yellow: #ffb510;
     }
 
     .game {
-      margin-top: -10px;
-
       .block {
         background: $blue;
         animation: secBlock 1.2s cubic-bezier(.74, .06, .4, .92) forwards;
@@ -211,6 +247,17 @@ $yellow: #ffb510;
         }
       }
     }
+  }
+
+  .static .block,
+  .static h1 {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .static .block {
+    width: 5% !important;
+    right: 96% !important;
   }
 }
 
@@ -236,6 +283,23 @@ $yellow: #ffb510;
 }
 
 @keyframes secBlock {
+  0% {
+    width: 0%;
+    right: 0;
+
+  }
+  50% {
+    width: 100%;
+    right: 0;
+
+  }
+  100% {
+    width: 5%;
+    right: 95%;
+  }
+}
+
+@keyframes slide {
   0% {
     width: 0%;
     right: 0;
@@ -307,40 +371,6 @@ $yellow: #ffb510;
   }
 }
 
-
-
-
-footer {
-  width: 350px;
-  height: 80px;
-  background: #ffb510;
-  position: absolute;
-  right: 0;
-  bottom: -80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-   animation: top 0.8s forwards;
-   animation-delay: 4s;
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    color: #232323;
-    font-family: 'Poppins';
-
-    i {
-      margin-right: 25px;
-      font-size: 22px;
-      color: #232323;
-      animation: icon 2s forwards;
-      animation-delay: 4s;
-      opacity: 0;
-    }
-  }
-}
-
 @keyframes top {
   0% {
     opacity: 0;
@@ -365,5 +395,12 @@ footer {
   100% {
     opacity: 1;
      bottom: 0px;
+  }
+}
+
+
+@media screen and (min-width: 720px) {
+  .container {
+    max-width: 300px;
   }
 }
