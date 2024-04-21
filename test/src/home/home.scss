@@ -9,7 +9,6 @@ $yellow: #ffb510;
 
 .container {
   width: 100%;
-  background: #232323;
   padding: 1.5rem;
   height: 75vh;
   position: relative;
@@ -347,5 +346,12 @@ $yellow: #ffb510;
   100% {
     opacity: 1;
      bottom: 0px;
+  }
+}
+
+
+@media screen and (min-width: 720px) {
+  .container {
+    max-width: 300px;
   }
 }

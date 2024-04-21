@@ -1,8 +1,9 @@
-import { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { Home } from './home/home.jsx';
 import { Header } from './header/header.jsx';
 import { About } from './about/about.jsx';
-import burger from './assets/burger.svg';
+import { Overlay } from './overlay/overlay.jsx'
+import { Desktop } from './desktop/desktop.jsx';
 import * as fn from './functions.js';
 import './css.scss'
 
@@ -13,34 +14,55 @@ function App() {
     firstRun: true
   });
 
-  function handleBurger(e) {
-    e.preventDefault();
-    fn.animateOverlay(overlayRef, setCurrentPage, 'Homepage');
+  const pages = {
+    Home: Home,
+    About: About
   }
 
   return (
     <>
       <Header />
-      <div className='container'>
-        <div className="overlay" ref={overlayRef}>
+
+      <div className='wrapper'>
+        <Overlay
+          ref={overlayRef}
+          overlayRef={overlayRef}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+
+        <div className='container'>
           {
-            currentPage.name === 'Homepage' ? null :
-              <button
-                onClick={(e) => handleBurger(e)}
-                className='burger-btn'><i className="fa fa-arrow-left back-icon"/>
-                <img src={burger} />
-              </button>
+            !fn.isMobile() ?
+              <Home
+                overlayRef={overlayRef}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+              /> :
+              null
           }
+          {
+            currentPage.name === 'Homepage' && fn.isMobile() ?
+              <Home
+                overlayRef={overlayRef}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+              /> : null
+          }
+          {fn.isMobile() && pages[currentPage.name] && React.createElement(pages[currentPage.name])}
+
         </div>
+
         {
-          currentPage.name === 'Homepage' ?
-            <Home
+          !fn.isMobile() ?
+            <Desktop
+              ref={overlayRef}
               overlayRef={overlayRef}
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
-            /> : null
+            /> :
+            null
         }
-        {currentPage.name === 'About' ? <About /> : null}
       </div>
     </>
   )

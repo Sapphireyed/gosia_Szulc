@@ -8,6 +8,7 @@ $grey: #242424;
 body {
   background-color: $grey;
   font-family: system-ui;
+  overflow-x: hidden;
 }
 
 .overlay {
@@ -31,4 +32,23 @@ body {
   border-radius:8px;
   background-color: transparent;
   // box-shadow: 0 0 15px rgba(0,0,0,.5);
+}
+
+.wrapper {
+  display: flex;
+  overflow-x: hidden;
+  position: relative;
+  background: #232323;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 0 20px black;
+}
+
+.container-desktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 0 20px black;
+  border-radius: 12px 12px 0 0;
+  position: relative;
 }

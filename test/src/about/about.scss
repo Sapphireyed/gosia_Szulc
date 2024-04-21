@@ -50,3 +50,23 @@
     display: none;
   }
 }
+
+@media screen and (min-width: 720px) {
+  .aboutPage {
+    width: 70%;
+
+    .listItem {
+      p {
+        font-size: 20px;
+      }
+
+      h5 {
+        font-size: 22px;
+      }
+
+      .icon {
+        width: 48px;
+      }
+    }
+  }
+}
