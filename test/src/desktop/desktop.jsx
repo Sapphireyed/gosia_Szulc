@@ -1,14 +1,13 @@
-import { forwardRef } from "react";
-import { Overlay } from "../overlay/overlay";
-import { Home } from "../home/home";
-import { About } from "../about/about";
+import React, { forwardRef, useEffect, useRef } from "react";
+import * as fn from '../functions.js';
 
-export const Desktop = forwardRef(({ setCurrentPage, currentPage }, ref) => {
+export const Desktop = forwardRef(({ setCurrentPage, currentPage, pages }, ref) => {
+  const desktopContainer = useRef(null);
 
   return (
     <>
-      <div className="container-desktop">
-        {currentPage.name === 'About' ? <About /> : null}
+      <div className="container-desktop" ref={desktopContainer}>
+        {!fn.isMobile() && pages[currentPage.name] && React.createElement(pages[currentPage.name])}
       </div>
     </>
   )

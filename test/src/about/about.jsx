@@ -8,7 +8,7 @@ export function About() {
 
   return (
     <>
-      <div className="aboutPage">
+      <div className="aboutPage page">
         <div className="listItem city">
           <p>Lives in:</p>
           <h5>Katowice, <br></br> Poland</h5>

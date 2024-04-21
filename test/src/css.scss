@@ -4,11 +4,16 @@ $grey: #242424;
 @import './header/header.scss';
 @import './about/about.scss';
 
+.hidden {
+  display: none !important;
+}
+
 
 body {
   background-color: $grey;
   font-family: system-ui;
   overflow-x: hidden;
+  position: relative;
 }
 
 .overlay {
