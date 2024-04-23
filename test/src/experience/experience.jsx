@@ -109,8 +109,12 @@ export function Experience() {
               <img src={synthrone} alt="synthrone-logo" className="synthrone-logo"/>
               <img src={synthroneP2} alt="synthrone-logo" className="synthroneP2-logo"/>
             </div>
-            <p>June 2021 - August 2022</p>
-            <p className="synthrone-time-limited">Time limited project ( 2 months )</p>
+
+            <div>
+              <p>June 2021 - August 2022</p>
+              <p className="synthrone-time-limited">Time limited project ( 2 months )</p>
+            </div>
+
             <h2><span className="yellow">Javascript Developer</span></h2>
             <div className="details">
               <p>
@@ -131,8 +135,9 @@ export function Experience() {
               </p>
             </div>
           </div>
-          <div>
-            <h2><span class="yellow">Freelance - Javascript Developer</span></h2>
+
+          <div className="item">
+            <h2><span className="blue">Freelance</span> {isMobile() ? <br></br> : '-'} Javascript Developer</h2>
             <p>2020 - 2022</p>
             <Cube />
           </div>
