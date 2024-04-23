@@ -1,20 +1,39 @@
-import React from "react";
+import React, {useState } from "react";
+import { Cube } from "./cube";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import lc from '../assets/exp/lc.svg'
 import contentplus from '../assets/exp/contentplus.svg'
+import contBg from '../assets/img/2.jpg';
+import synthrone from '../assets/exp/synthrone.svg'
+import synthroneP2 from '../assets/exp/synthrone-p2.svg'
+import lcBg from '../assets/img/1.jpg';
 import { isMobile } from "../functions";
 
 export function Experience() {
+  const [slide, setSlide] = useState(0);
+  const bgs = [lcBg, contBg]
+
   var settings = {
     dots: true,
+    pauseOnFocus: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false
+    autoplay: false,
+    afterChange: index => {
+      console.log('index', index);
+      setSlide(prevState => {
+        const newState =  index;
+        return newState;
+      });
+      console.log('prevState', slide);
+    }
   };
+
+
 
   return (
     <>
@@ -62,7 +81,7 @@ export function Experience() {
               <img src={contentplus} alt="contentplus-logo"/>
               <p>Contentplus</p>
             </div>
-            <p>July 2022 -</p>
+            <p>September 2021 - June 2022</p>
             <h2><span>Javascript Developer</span></h2>
             <div className="details">
               <p>
@@ -85,17 +104,37 @@ export function Experience() {
               </p>
             </div>
           </div>
-          <div>
-            <h3>3</h3>
+          <div className="item">
+            <div className="logo">
+              <img src={synthrone} alt="synthrone-logo" className="synthrone-logo"/>
+              <img src={synthroneP2} alt="synthrone-logo" className="synthroneP2-logo"/>
+            </div>
+            <p>June 2021 - August 2022</p>
+            <p className="synthrone-time-limited">Time limited project ( 2 months )</p>
+            <h2><span className="yellow">Javascript Developer</span></h2>
+            <div className="details">
+              <p>
+                <span>-></span>
+                Writing javascript scripts for an existing bot that crawls urls to get needed informtion and statistics.
+              </p>
+              <p>
+                <span>-></span>
+                Each script was unique to match specific client's needs.
+              </p>
+              <p>
+                <span>-></span>
+                Javascript and pupeteer as main technologies used
+              </p>
+              <p>
+                <span>-></span>
+                Cooperation with Senior developers on more complex cases
+              </p>
+            </div>
           </div>
           <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
+            <h2><span class="yellow">Freelance - Javascript Developer</span></h2>
+            <p>2020 - 2022</p>
+            <Cube />
           </div>
         </Slider>
       </div>
