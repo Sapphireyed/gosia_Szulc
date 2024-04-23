@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import qlImg from './freelance/img/questlands.png'
 import jobmaniaImg from './freelance/img/jobmania.png'
 import raImg from './freelance/img/rogue.png'
@@ -7,12 +7,18 @@ import { changeProjects } from './freelance/work/changeProject';
 import { jobmania, raPics, qlPics, kancPics } from './freelance/work/projectsImgs';
 
 export function Cube() {
+  const [currentSide, setCurrentSide] = useState('front');
+
   const frontRef = useRef(null);
   const bottomRef = useRef(null);
   const rightRef = useRef(null);
   const leftRef = useRef(null);
   const backRef = useRef(null);
   const topRef = useRef(null);
+  const rogueRef = useRef(null);
+  const qlRef = useRef(null);
+  const kancRef = useRef(null);
+  const jobmRef = useRef(null);
   const sceneRef = useRef(null);
   const cubeRef = useRef(null);
   let checkedRef = useRef(null);
@@ -20,21 +26,13 @@ export function Cube() {
   let currentClass = '';
 
   useEffect(() => {
-    console.log('changed')
-    function changeSide() {
+    function changeSide(newSide) {
       var checkedRadio = checkedRef.current;
-
       var showClass = 'show-' + checkedRadio?.value;
-      //var imgOnSide = document.querySelector('.' + checkedRadio?.value + ' img')
 
-      if (currentClass) {
+      if (currentClass !== '') {
         cubeRef.current.classList.remove(currentClass);
       }
-      // if (imgOnSide !== null && checkedRadio?.value !== 'bottom') {
-      //   //  document.querySelector('.' + checkedRadio.value + ' img').style.animation = 'stretch 0.6s ease 0.5s forwards'
-      // } else if (checkedRadio?.value == 'bottom') {
-      //     console.log('bottom')
-      // }
 
 
       cubeRef.current.classList.add(showClass);
@@ -55,11 +53,10 @@ export function Cube() {
       changeSide();
   }, 2000)
 
-  // let projectsList = Array.from(document.querySelectorAll('#listDiv ul img'))
-  // let cubeSides = Array.from(document.getElementsByClassName('cube_face'))
-
-  // let allPrjectsPics = [jobmania, raPics, kancPics, qlPics]
-  // changeProjects(projectsList, cubeSides, allPrjectsPics, spinCube)
+  let projectsList = [jobmRef.current, kancRef.current, rogueRef.current, qlRef.current];
+  let cubeSides = projectsList;
+  let allPrjectsPics = [jobmania, kancPics, raPics, qlPics];
+  changeProjects(projectsList, cubeSides, allPrjectsPics, spinCube);
   }, []);
 
   return (
@@ -67,36 +64,36 @@ export function Cube() {
       <div id="details-1">
         <div className="scene animatedCube">
           <div className="cube" ref={cubeRef}>
-            <div className="cube_face front animatedSide">
-              <a href="https://sapphireyed.github.io/ql/" target="_blank">
+            <div className="cube_face front animatedSide qlSide" ref={qlRef} >
+              <a>
                 <img src={qlImg} className="cubeSide" alt="Front" />
               </a>
             </div>
 
-            <div className="cube_face back animatedSide">
-              <a href="https://sapphireyed.github.io/ql/" target="_blank">
+            <div className="cube_face back animatedSide jobmaniaSide" ref={jobmRef} >
+              <a>
                 <img src={jobmaniaImg} className="cubeSide" alt="Back" />
               </a>
             </div>
 
-            <div className="cube_face right animatedSide">
-              <a href="https://sapphireyed.github.io/ql/" target="_blank">
+            <div className="cube_face right animatedSide kancSide" ref={kancRef} >
+              <a>
                 <img src={kanc} className="cubeSide" alt="Right" />
               </a>
             </div>
 
-            <div className="cube_face left animatedSide">
-              <a href="https://sapphireyed.github.io/ql/" target="_blank">
+            <div className="cube_face left animatedSide rogueSide" ref={rogueRef}>
+              <a>
                 <img src={raImg} className="cubeSide" alt="Left" />
               </a>
             </div>
 
             <div className="cube_face top animatedSide">
-TOP
+
             </div>
 
             <div className="cube_face bottom animatedSide">
-BOTTOM
+
             </div>
           </div>
         </div>

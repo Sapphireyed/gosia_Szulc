@@ -1,11 +1,7 @@
-let links = ['https://jobmania.epicgamer.org/index.html', 'http://rogueadventu.re/', 'http://krystianszulc.pl/', 'https://sapphireyed.github.io/ql/']
-
 function changeProjects(arr, cube, pics, interval) {
     arr.map((item,ind) => {
         item.addEventListener('click', function () {
             let linkEl = document.createElement('a')
-            linkEl.href = links[ind]
-            linkEl.target = '_blank'
             clearInterval(interval)
 
             cube.map((side, i) => {
@@ -30,8 +26,8 @@ function changeProjects(arr, cube, pics, interval) {
                         sideName = 'Bottom'
                         break;
                 }
-                side.style.animation = 'move' + sideName + ' 0.5s ease 1 forwards'
-                side.parentNode.parentNode.classList.remove('animatedCube')
+                //side.style.animation = 'move' + sideName + ' 0.5s ease 1 forwards'
+                //side.parentNode.parentNode.classList.remove('animatedCube')
                 side.innerHTML = ''
                 if (i == 5 && pics[ind] !== undefined) {
                     let link = linkEl.cloneNode(true)
@@ -48,7 +44,7 @@ function changeProjects(arr, cube, pics, interval) {
                     side.append(link)
                     side.children[0].children[0].classList.add('cubeSide')
                 }
-                
+
             })
             let cubeImgs = document.querySelectorAll('.cube_face img')
             if (cubeImgs.length > 1 && cubeImgs.length !== 0) {
