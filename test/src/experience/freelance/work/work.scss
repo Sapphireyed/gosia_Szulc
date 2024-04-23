@@ -1,0 +1,359 @@
+﻿
+#header {
+    position: absolute;
+    top:44%;
+    left: -5%;
+    transform: rotate(-90deg);
+    font-size: 48px;
+    letter-spacing:9px;
+}
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 35px;
+    font: 1em/1 Open Sans, Impact;
+    margin: auto;
+}
+
+h1:after {
+    content: '\00a0';
+    background-image: radial-gradient(at 50% 0, #94c1ff 0%, #012145 50%, transparent 75%);
+    background-size: 100% 5px;
+    margin-top: 4px;
+    background-repeat: no-repeat;
+    float: left;
+    width: 100%;
+    transform: scale(0);
+    animation: popup 0.7s linear forwards;
+}
+
+#projects {
+    margin-top: 10px;
+    display: flex;
+    width:95%;
+    margin: auto;
+
+}
+
+/* list */
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: #9eb1bb;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    background-color: rgba(69,69,69,1);
+}
+#listDiv {
+    width: 50%;
+    position: relative;
+    overflow-y: scroll;
+
+    img {
+        width: 50%;
+        display: block;
+        margin: 6% auto;
+        transform: rotate(0) scale(0);
+        animation: popup-rotate 0.8s ease forwards;
+    }
+
+    img:first-child {
+        filter: invert(1);
+        animation-delay: 0.5s
+    }
+
+    img:nth-child(2) {
+        width: 35%;
+        animation-delay: 1.5s
+    }
+
+    img:nth-child(3) {
+        animation-delay: 2.5s
+    }
+
+    img:nth-child(4) {
+        animation-delay: 3.5s
+    }
+
+}
+
+@keyframes popup-rotate {
+    0% {
+        transform:rotate(0) scale(0)
+    }
+    100% {
+        transform: rotate(1080deg) scale(1)
+    }
+}
+/* cube */
+#details-1 {
+    width: 50%;
+    margin:auto;
+
+    p { margin: 70px auto;
+        text-align:center;
+        position: inherit;
+        z-index: 10;
+    }
+}
+.scene {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    perspective: 1350px;
+    margin: auto auto;
+    transform: scale(1) rotate(0deg);
+}
+.animatedCube {
+    animation: spin 10s ease infinite
+}
+
+
+
+@keyframes spin{
+    0% { transform: scale(0.8) rotate(0deg)}
+    50% { transform: scale(0.4) rotate(180deg)}
+    100% { transform: scale(0.8) rotate(360deg)}
+}
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.cube_face {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border: 5px solid black;
+    display: flex;
+    align-items: baseline;
+    background: rgba(195,195,195, .7);
+    animation: assembleSides 1s ease forwards;
+
+    a {
+        display: block;
+        margin:auto;
+    }
+    img {
+        width: 400px;
+        margin: auto;
+        display: block;
+        transform: scale(1)
+    }
+
+    img:hover {
+        transform: scale(1.6);
+    }
+}
+.cubeSide {
+    height: 229px;
+    max-height: 400px;
+    border: 4px solid black;
+    border-radius: 10px;
+    opacity: 1;
+}
+.cubeSideBottom {
+    height: auto;
+    border: 4px solid black;
+    border-radius: 10px;
+}
+
+@keyframes stretch{
+    0% {
+        height:  0;
+    }
+    100% {
+        height:234px;
+    }
+}
+.front {
+    transform: rotateY( 0deg) translateZ(325px);
+    animation: moveFront 5s ease 1s infinite alternate;
+    //background: hsla( 0, 100%, 50%, 0.7);
+    //background: hsla(240, 100%, 10%, .7); blue
+}
+
+.right {
+    transform: rotateY( 90deg) translateZ(325px);
+    animation: moveRight 5s ease 1s infinite alternate;
+    // background: hsla( 60, 100%, 50%, 0.7);
+    //background: hsla(240, 65%, 25%, .7); blue
+}
+
+.back {
+    transform: rotateY(180deg) translateZ(325px);
+    animation: moveBack 5s ease 1s infinite alternate;
+    //background: hsla(120, 100%, 50%, 0.7);
+    //background: hsla(231, 54%, 40%, 0.7); blue
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(325px);
+    animation: moveLeft 5s ease 1s infinite alternate;
+    // background: hsla(180, 100%, 50%, 0.7);
+    //background: hsla(231, 80%, 40%, 0.7); blue
+}
+
+.top {
+    //background: hsla(240, 100%, 50%, 0.7);
+    //background: hsla(240, 100%, 50%, 0.7); blue
+    transform: rotateX( 90deg) translateZ(325px);
+    animation: moveTop 5s ease 1s infinite alternate;
+    background: rgba(45,45,45, .7);
+}
+
+.bottom {
+    transform: rotateX(-90deg) translateZ(325px);
+    animation: moveBottom 5s ease 1s infinite alternate;
+    //background: hsla(300, 100%, 50%, 0.7);
+    //background: hsla(234, 80%, 68%, 0.7); blue
+    background: rgba(45,45,45, .7);
+
+    img {
+        height: 350px;
+        width: auto;
+        margin: auto 20px;
+        display:inline-block;
+    }
+}
+
+.cube.show-front {
+    transform: translateZ(-100px) rotateY( 0deg);
+}
+
+.cube.show-right {
+    transform: translateZ(-100px) rotateY( -90deg);
+}
+
+.cube.show-back {
+    transform: translateZ(-100px) rotateY(-180deg);
+}
+
+.cube.show-left {
+    transform: translateZ(-100px) rotateY( 90deg);
+}
+
+.cube.show-top {
+    transform: translateZ(-100px) rotateX( -90deg);
+}
+
+.cube.show-bottom {
+    transform: translateZ(-100px) rotateX( 90deg);
+}
+
+/* cube sides animation*/
+@keyframes moveFront {
+    0% {
+        transform: rotateY( 0deg) translateZ(325px)
+    }
+    100% {
+        transform: rotateY( 0deg) translateZ(225px)
+    }
+}
+@keyframes moveRight {
+    0% {
+        transform: rotateY( 90deg) translateZ(325px)
+    }
+
+    100% {
+        transform: rotateY( 90deg) translateZ(225px)
+    }
+}
+@keyframes moveBack {
+    0% {
+        transform: rotateY(180deg) translateZ(325px);
+    }
+
+    100% {
+        transform: rotateY(180deg) translateZ(225px);
+    }
+}
+@keyframes moveLeft {
+    0% {
+        transform: rotateY(-90deg) translateZ(325px);
+    }
+
+    100% {
+        transform: rotateY(-90deg) translateZ(225px);
+    }
+}
+@keyframes moveTop {
+    0% {
+        transform: rotateX( 90deg) translateZ(325px);
+    }
+
+    100% {
+        transform: rotateX( 90deg) translateZ(225px);
+    }
+}
+@keyframes moveBottom {
+    0% {
+        transform: rotateX(-90deg) translateZ(325px);
+    }
+
+    100% {
+        transform: rotateX(-90deg) translateZ(225px);
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    #header {
+        left: -22%;
+        font-size:28px;
+    }
+    #projects { display: block; height: 100%;}
+    #listDiv {
+        width:100%;
+        margin-top: 160px;
+        overflow-y: visible;
+        img {
+            width:80%;
+            margin: 12% auto;
+        }
+        img:nth-child(2) { width: 60%; }
+    }
+    #details-1 {
+        width: 100%;
+
+        .scene {
+            width: 300px;
+            height: 300px;
+
+            .cube_face {
+                width: 300px;
+                height: 300px;
+
+                img {
+                    width: 270px;
+                    height: auto;
+                }
+
+                .cubeSide {
+                    width: 270px;
+                    height: 142px;
+                }
+
+                .cubeSideBottom {
+                    width: auto;
+                    height: 270px;
+                }
+            }
+
+
+            .bottom img {
+                margin: auto 8px;
+            }
+        }
+    }
+}
+

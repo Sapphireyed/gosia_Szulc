@@ -1,4 +1,11 @@
 .experiencePage {
+  //background-color: rgba(20, 20, 20, .9);
+
+  .exp-bg {
+    width: 100%;
+    position: absolute;
+    opacity: 0.15;
+  }
   .item.lc {
     img {
       margin-bottom: -18px;
@@ -16,6 +23,15 @@
       color: $blue;
     }
 
+    h2 span.yellow {
+      color: $yellow;
+    }
+
+    p.synthrone-time-limited {
+      font-size: 12px !important;
+      color: rgba(255, 255, 255, .5)
+    }
+
     .details {
       width: 100%;
       color: rgba(255, 255, 255, .6);
@@ -24,6 +40,10 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+
+      p {
+        text-align: justify;
+      }
 
       p:nth-child(odd) span,
       p:nth-child(even) span {
@@ -66,6 +86,10 @@
     margin: 0 auto;
     padding: 0;
     margin-bottom: 50px;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: $yellow;
   }
 }
 
@@ -128,10 +152,6 @@
 
 @media screen and (min-width: 720px) {
   .experiencePage {
-    img {
-      width: 45%;
-    }
-
     .item.lc {
       img {
         margin-bottom: -68px;
@@ -141,14 +161,20 @@
     .item {
       .logo {
         margin-top: 85px;
-        margin-bottom: 18px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 22px;
+        height: 78.58px;
 
-        img {
-          width: 90px;
+        .synthrone-logo {
+          height: 78.58px;
+          width: auto ;
+          margin-right: 15px;
+        }
+
+        .synthroneP2-logo {
+          height: 40px
         }
 
         p {
@@ -159,6 +185,11 @@
 
     .slick-slider {
       width: 75vw;
+
+      .slick-prev:before,
+      .slick-next:before {
+        color: darkgray !important;
+      }
 
       .slick-prev {
         display: block !important;
