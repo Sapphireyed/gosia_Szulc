@@ -6,6 +6,17 @@ function createImgs(imgsSrc, imgs) {
     })
 }
 
+//All
+import qlImg from '../img/questlands.png'
+import jobmaniaImg from '../img/jobmania.png'
+import raImg from '../img/rogue.png'
+import kanc from '../img/kanc.png';
+
+let allSrcs = [qlImg, jobmaniaImg, raImg, kanc]
+let allPics = []
+
+createImgs(allSrcs, allPics)
+
 // JOBMANIA
 import loading from '../img/projects/jobm/loading.png'
 import home from '../img/projects/jobm/homeAnimations.png'
@@ -82,4 +93,4 @@ let kancDesc = '<p>A website created for law office to, standard website contain
 let qlDesc = '<p>A demo web created for an Adroide rogue-like game Quest Lands. The web created as privae hobby project.' +
     ' Althought it is not an official website it currently serves as a wiki for game players announced officialy by game developer on his discord server.</p > '*/
 
-export { jobmania, raPics, kancPics, qlPics }
+export { jobmania, raPics, kancPics, qlPics, allPics }

@@ -3,13 +3,13 @@ import qlImg from './freelance/img/questlands.png'
 import jobmaniaImg from './freelance/img/jobmania.png'
 import raImg from './freelance/img/rogue.png'
 import kanc from './freelance/img/kanc.png';
-import { changeProjects } from './freelance/work/changeProject';
-import { jobmania, raPics, qlPics, kancPics } from './freelance/work/projectsImgs';
+import { changeProjects } from './freelance/work/changeProject.jsx';
+import { jobmania, raPics, qlPics, kancPics, allPics } from './freelance/work/projectsImgs';
 
 export function Cube() {
-  const [currentSide, setCurrentSide] = useState('front');
+  const [restarted, setRestarted] = useState(true);
+  const [spinCubeInterval, setSpinCubeInterval] = useState(null);
 
-  const frontRef = useRef(null);
   const bottomRef = useRef(null);
   const rightRef = useRef(null);
   const leftRef = useRef(null);
@@ -19,26 +19,24 @@ export function Cube() {
   const qlRef = useRef(null);
   const kancRef = useRef(null);
   const jobmRef = useRef(null);
-  const sceneRef = useRef(null);
   const cubeRef = useRef(null);
   let checkedRef = useRef(null);
   const radioGroupRef = useRef(null);
   let currentClass = '';
 
   useEffect(() => {
-    function changeSide(newSide) {
+
+    function changeSide() {
       var checkedRadio = checkedRef.current;
       var showClass = 'show-' + checkedRadio?.value;
 
       if (currentClass !== '') {
-        cubeRef.current.classList.remove(currentClass);
+        cubeRef?.current?.classList.remove(currentClass);
       }
 
-
+      cubeRef?.current?.classList.remove('[class*="show-"]');
       cubeRef.current.classList.add(showClass);
       currentClass = showClass;
-
-    //  scene.style.animation = 'spin 5s ease infinite'
   }
   // set initial side
   changeSide();
@@ -53,11 +51,34 @@ export function Cube() {
       changeSide();
   }, 2000)
 
+  setSpinCubeInterval(spinCube);
+
   let projectsList = [jobmRef.current, kancRef.current, rogueRef.current, qlRef.current];
   let cubeSides = projectsList;
-  let allPrjectsPics = [jobmania, kancPics, raPics, qlPics];
-  changeProjects(projectsList, cubeSides, allPrjectsPics, spinCube);
-  }, []);
+  let allPrjectsPics = [jobmania, kancPics, raPics, qlPics, allPics, kancPics];
+  console.log('setRestarted', setRestarted)
+  changeProjects(projectsList, cubeSides, allPrjectsPics, spinCube, setRestarted, restarted);
+
+  return () => {
+    clearInterval(spinCube);
+  };
+
+  }, [restarted]);
+
+  function toOriginalState() {
+    setRestarted(true);
+    clearInterval(spinCubeInterval);
+
+    qlRef.current.querySelector('img').src = qlImg;
+    rogueRef.current.querySelector('img').src = raImg;
+    kancRef.current.querySelector('img').src = kanc;
+    jobmRef.current.querySelector('img').src = jobmaniaImg;
+
+    qlRef.current.classList.remove('cube-side-changed');
+    rogueRef.current.classList.remove('cube-side-changed');
+    kancRef.current.classList.remove('cube-side-changed');
+    jobmRef.current.classList.remove('cube-side-changed');
+  }
 
   return (
     <div className="cube-wrapper">
@@ -88,12 +109,12 @@ export function Cube() {
               </a>
             </div>
 
-            <div className="cube_face top animatedSide">
-
+            <div className="cube_face top animatedSide" onClick={() => toOriginalState()}>
+              RESTART
             </div>
 
-            <div className="cube_face bottom animatedSide">
-
+            <div className="cube_face bottom animatedSide" onClick={() => toOriginalState()}>
+              RESTART
             </div>
           </div>
         </div>
