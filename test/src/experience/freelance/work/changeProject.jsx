@@ -1,6 +1,5 @@
 function changeProjects(arr, cube, pics, setRestarted, restarted) {
 
-    console.log('restarted', restarted)
     arr.map((item,ind) => {
         item.addEventListener('click', () => handleSideClick(item, ind));
     });
@@ -8,10 +7,8 @@ function changeProjects(arr, cube, pics, setRestarted, restarted) {
     function handleSideClick(item, ind) {
         setRestarted(prevState => false);
         if (!restarted) {
-            console.log('return')
             return;
         } else if (restarted) {
-            console.log('return not')
             arr.forEach(side => side.classList.add('cube-side-changed'));
 
             cube.map((side, i) => {

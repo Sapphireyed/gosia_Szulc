@@ -8,7 +8,7 @@ import { jobmania, raPics, qlPics, kancPics, allPics } from './freelance/work/pr
 
 export function Cube() {
   const [restarted, setRestarted] = useState(true);
-  const [isAuto, setIsAuto] = useState(true);
+  const [isAuto, setIsAuto] = useState(false);
   const [intervals, setIntervals] = useState([]);
 
   const bottomRef = useRef(null);
@@ -25,52 +25,61 @@ export function Cube() {
   const autoRef = useRef(null);
   const radioGroupRef = useRef(null);
 
-  function startSpinning(radioRefs) {
-      const spinCube = setInterval(() => {
-        console.log('spinning!')
-        let rand = Math.floor(Math.random() * 5);
-        radioRefs[rand].click();
-      }, 2000);
-
-      // Save the interval ID
-      setIntervals(prevState => [...prevState, spinCube])
-  }
-
-  function handleAutoClick() {
-    const radioRefs = Array.from(radioGroupRef.current.querySelectorAll('input'));
-    setIsAuto(!isAuto);
-    console.log('isAuto', isAuto)
-
-    if (!isAuto) {
-      console.log(intervals.length)
-      intervals.forEach(interval => clearInterval(interval));
-      setIntervals([]);
-    } else {
-      startSpinning(radioRefs);
-    }
-  }
-
-  function changeSide(value) {
-    let showClass = 'show-' + value;
-
-    cubeRef.current.className = 'cube';
-    cubeRef.current.classList.add(showClass);
-  }
-
-  function handleRadio(ref) {
-    const value = ref.current.value;
-
-    changeSide(value);
-  }
-
   useEffect(() => {
+    const radioRefs = Array.from(radioGroupRef.current.querySelectorAll('input'));
+    startSpinning(radioRefs);
+
     let projectsList = [jobmRef.current, kancRef.current, rogueRef.current, qlRef.current];
     let cubeSides = projectsList;
     let allPrjectsPics = [jobmania, kancPics, raPics, qlPics, allPics, kancPics];
 
     changeProjects(projectsList, cubeSides, allPrjectsPics, setRestarted, restarted);
-    handleAutoClick();
   }, []);
+
+  function startSpinning(radioRefs) {
+    const spinCube = setInterval(() => {
+      let rand = Math.floor(Math.random() * 5);
+      radioRefs[rand].click();
+    }, 2000);
+
+    // Save the interval ID
+    setIntervals(prevState => [...prevState, spinCube])
+}
+
+function handleAutoClick() {
+  const radioRefs = Array.from(radioGroupRef.current.querySelectorAll('input'));
+
+  if (!isAuto) {
+    intervals.forEach(interval => clearInterval(interval));
+    setIntervals([]);
+  } else {
+    startSpinning(radioRefs);
+  }
+
+  setIsAuto(prevState => {
+    const newState = !prevState;
+    return newState;
+  });
+
+  console.log(isAuto)
+}
+
+function changeSide(value) {
+  let showClass = 'show-' + value;
+
+  cubeRef.current.className = 'cube';
+  cubeRef.current.classList.add(showClass);
+}
+
+function handleRadio(ref, e) {
+  const value = ref.current.value;
+  changeSide(value);
+
+  if (e.isTrusted) {
+    intervals.forEach(interval => clearInterval(interval));
+    setIntervals([]);
+  }
+}
 
   function toOriginalState() {
     setRestarted(true);
@@ -130,27 +139,27 @@ export function Cube() {
         <div className='allRadio'>
           <p className="radio-group" ref={radioGroupRef}>
             <label>
-              <input type="radio" name="rotate-cube-side" value="front" ref={checkedRef} onChange={() => handleRadio(checkedRef)}  />
+              <input type="radio" name="rotate-cube-side" value="front" ref={checkedRef} onChange={(e) => handleRadio(checkedRef, e)}  />
               front
             </label>
             <label>
-              <input type="radio" name="rotate-cube-side" value="right" ref={rightRef} onChange={() => handleRadio(rightRef)} />
+              <input type="radio" name="rotate-cube-side" value="right" ref={rightRef} onChange={(e) => handleRadio(rightRef, e)} />
               right
             </label>
             <label>
-              <input type="radio" name="rotate-cube-side" value="back" ref={backRef} onChange={() => handleRadio(backRef)} />
+              <input type="radio" name="rotate-cube-side" value="back" ref={backRef} onChange={(e) => handleRadio(backRef,e)} />
               back
             </label>
             <label>
-              <input type="radio" name="rotate-cube-side" value="left" ref={leftRef} onChange={() => handleRadio(leftRef)} />
+              <input type="radio" name="rotate-cube-side" value="left" ref={leftRef} onChange={(e) => handleRadio(leftRef,e)} />
               left
             </label>
             <label>
-              <input type="radio" name="rotate-cube-side" value="top" ref={topRef} onChange={() => handleRadio(topRef)} />
+              <input type="radio" name="rotate-cube-side" value="top" ref={topRef} onChange={(e) => handleRadio(topRef, e)} />
               top
               </label>
             <label>
-              <input type="radio" name="rotate-cube-side" value="bottom" ref={bottomRef} onChange={() => handleRadio(bottomRef)} />
+              <input type="radio" name="rotate-cube-side" value="bottom" ref={bottomRef} onChange={(e) => handleRadio(bottomRef, e)} />
               bottom
             </label>
           </p>
