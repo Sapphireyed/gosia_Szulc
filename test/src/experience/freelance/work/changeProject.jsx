@@ -1,4 +1,4 @@
-function changeProjects(arr, cube, pics, interval, setRestarted, restarted) {
+function changeProjects(arr, cube, pics, setRestarted, restarted) {
 
     console.log('restarted', restarted)
     arr.map((item,ind) => {
@@ -13,7 +13,6 @@ function changeProjects(arr, cube, pics, interval, setRestarted, restarted) {
         } else if (restarted) {
             console.log('return not')
             arr.forEach(side => side.classList.add('cube-side-changed'));
-            clearInterval(interval)
 
             cube.map((side, i) => {
                 side.parentNode.parentNode.classList.remove('animatedCube')
