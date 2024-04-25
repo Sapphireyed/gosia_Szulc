@@ -1,5 +1,9 @@
 .cube-wrapper {
 
+  .not-clickable {
+    pointer-events: none;
+  }
+
   #header {
     position: absolute;
     top:44%;
@@ -104,13 +108,14 @@
         z-index: 10;
     }
   }
+
   .scene {
     position: relative;
     width: 450px;
     height: 450px;
     perspective: 1350px;
     margin: auto auto;
-    transform: scale(1) rotate(0deg);
+    transform: scale(.7) rotate(0deg);
   }
   .animatedCube {
     animation: spin 10s ease infinite
@@ -153,7 +158,7 @@
     }
 
     img:hover {
-        transform: scale(1.6);
+       // transform: scale(1.6);
     }
   }
   .cubeSide {
@@ -307,9 +312,71 @@
   }
 }
 
+@media only screen and (min-width: 760px) {
+  .radio-group {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: baseline;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 50%;
+    left: 27px;
+  }
+}
+
 @media only screen and (max-width: 760px) {
+  .item {
+    h2 {
+      position: static;
+      z-index: 99999;
+    }
+  }
   .cube-wrapper {
+    height: 100%;
     transform: scale(0.6);
-    margin-left: -15%;
+    margin-left: -7%;
+    margin-top: -27%;
+
+    .scene {
+      margin-top: 25%;
+      transform: scale(.6);
+    }
+
+    .details-1 {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .radio-group {
+      height: 50px;
+      width: 100%;
+      transform: scale(1.7);
+      position: absolute;
+      top: 0;
+      z-index: 9999;
+      background-color: rgba(0, 0, 0, 0.3);
+      display: flex;
+      gap: 11px;
+      align-items: center;
+      padding: 10px 85px 10px 100px;
+      justify-content: space-between;
+
+      label {
+        //margin-right: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+
+        :first-child {
+         //margin-left: 40%;
+        }
+      }
+    }
   }
 }
