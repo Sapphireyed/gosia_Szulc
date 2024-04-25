@@ -24,6 +24,20 @@ export function Cube() {
   const radioGroupRef = useRef(null);
   let currentClass = '';
 
+  function startSpinning(fn) {
+    radioGroupRef.current.addEventListener('change', fn);
+    let spinCube = setInterval(function () {
+        let rand = Math.floor(Math.random() * 5);
+        if (radioGroupRef.current) {
+
+          checkedRef.current = radioGroupRef.current.children[rand].querySelector('input');
+        }
+        fn();
+    }, 2000);
+
+    return spinCube;
+  }
+
   useEffect(() => {
 
     function changeSide() {
@@ -41,22 +55,13 @@ export function Cube() {
   // set initial side
   changeSide();
 
-  radioGroupRef.current.addEventListener('change', changeSide);
-  let spinCube = setInterval(function () {
-      let rand = Math.floor(Math.random() * 5);
-      if (radioGroupRef.current) {
-
-        checkedRef.current = radioGroupRef.current.children[rand].querySelector('input');
-      }
-      changeSide();
-  }, 2000)
-
+  const spinCube = startSpinning(changeSide);
   setSpinCubeInterval(spinCube);
 
   let projectsList = [jobmRef.current, kancRef.current, rogueRef.current, qlRef.current];
   let cubeSides = projectsList;
   let allPrjectsPics = [jobmania, kancPics, raPics, qlPics, allPics, kancPics];
-  console.log('setRestarted', setRestarted)
+
   changeProjects(projectsList, cubeSides, allPrjectsPics, spinCube, setRestarted, restarted);
 
   return () => {
@@ -69,15 +74,17 @@ export function Cube() {
     setRestarted(true);
     clearInterval(spinCubeInterval);
 
+    const sides =[qlRef, rogueRef, kancRef, jobmRef, topRef, bottomRef];
+
+    sides.forEach(side => {
+      side.current.classList.remove('cube-side-changed');
+      side.current.classList.remove('not-clickable');
+    })
+
     qlRef.current.querySelector('img').src = qlImg;
     rogueRef.current.querySelector('img').src = raImg;
     kancRef.current.querySelector('img').src = kanc;
     jobmRef.current.querySelector('img').src = jobmaniaImg;
-
-    qlRef.current.classList.remove('cube-side-changed');
-    rogueRef.current.classList.remove('cube-side-changed');
-    kancRef.current.classList.remove('cube-side-changed');
-    jobmRef.current.classList.remove('cube-side-changed');
   }
 
   return (
@@ -110,18 +117,18 @@ export function Cube() {
             </div>
 
             <div className="cube_face top animatedSide" onClick={() => toOriginalState()}>
-              RESTART
+              {restarted ? '' : 'RESTART' }
             </div>
 
             <div className="cube_face bottom animatedSide" onClick={() => toOriginalState()}>
-              RESTART
+              {restarted ? '' : 'RESTART' }
             </div>
           </div>
         </div>
 
         <p className="radio-group" ref={radioGroupRef}>
           <label><input type="radio" name="rotate-cube-side" value="front" ref={checkedRef} defaultChecked /> front </label>
-          <label><input type="radio" name="rotate-cube-side" value="right" ref={rightRef} /> right </label>
+          <label><input type="radio" name="rotate-cube-side" value="right" ref={rightRef} /> <span>right</span> </label>
           <label><input type="radio" name="rotate-cube-side" value="back" ref={backRef} /> back </label>
           <label><input type="radio" name="rotate-cube-side" value="left" ref={leftRef} /> left </label>
           <label><input type="radio" name="rotate-cube-side" value="top" ref={topRef} /> top </label>

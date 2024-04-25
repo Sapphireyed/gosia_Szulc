@@ -9,8 +9,8 @@ $yellow: #ffb510;
 
 .container {
   width: 100%;
-  padding: 1.5rem;
   height: 75vh;
+  padding: 1.5rem;
   position: relative;
   overflow-x: hidden;
 
@@ -365,5 +365,6 @@ $yellow: #ffb510;
   .container {
     max-width: 300px;
     min-width: 300px;
+    height: 75xh;
   }
 }
