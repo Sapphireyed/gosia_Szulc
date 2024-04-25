@@ -313,16 +313,29 @@
 }
 
 @media only screen and (min-width: 760px) {
-  .radio-group {
+  .allRadio {
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: baseline;
     top: 50%;
     transform: translateY(-50%);
     height: 50%;
     left: 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 12px;
+  }
+
+  .radio-group,
+  .radio-auto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: baseline;
+    gap: 8px;
+
+    input {
+      margin-right: 6px;
+    }
   }
 }
 
