@@ -365,14 +365,17 @@
       align-items: center;
     }
 
-    .radio-group {
-      height: 50px;
-      width: 100%;
-      transform: scale(1.7);
+    .allRadio {
       position: absolute;
-      top: 0;
+      top: -36px;
       z-index: 9999;
+      transform: scale(1.7);
       background-color: rgba(0, 0, 0, 0.3);
+      height: 70px;
+      width: 100%;
+    }
+
+    .radio-group {
       display: flex;
       gap: 11px;
       align-items: center;
