@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import katowiceLogo from '../assets/katowiceLogo.svg'
-import jsLogo from '../assets/jsLogo.svg'
-import phone from '../assets/phone.svg'
-import email from '../assets/email.svg'
+import katowiceLogo from '../assets/katowiceLogo.svg';
+import jsLogo from '../assets/jsLogo.svg';
+import phone from '../assets/phone.svg';
+import email from '../assets/email.svg';
+import uni from '../assets/uni.svg';
 
 export function About() {
 
@@ -28,6 +29,11 @@ export function About() {
           <p>Email:</p>
           <h5>malgorzata.k.szulc@gmail.com</h5>
           <img src={email} alt="email icon" className="icon email-icon"/>
+        </div>
+        <div className="listItem eduction">
+          <p>Education:</p>
+          <h5>Master degree (Law) at Jagiellonian University</h5>
+          <img src={uni} alt="email icon" className="icon email-icon"/>
         </div>
 
         <div className='summary'>
