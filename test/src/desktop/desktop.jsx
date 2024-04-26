@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef } from "react";
+import React, { forwardRef, useRef } from "react";
 import * as fn from '../functions.js';
 
 export const Desktop = forwardRef(({ setCurrentPage, currentPage, pages }, ref) => {
