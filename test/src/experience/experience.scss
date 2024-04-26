@@ -171,6 +171,25 @@
   }
 }
 
+@media screen and (max-width: 720px) {
+  .item.freelance {
+    h2 {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap:6px;
+
+      span {
+        font-size: 24px;
+      }
+    }
+
+    p.date {
+      margin-top: -10px;
+    }
+  }
+}
+
 @media screen and (min-width: 720px) {
   .experiencePage {
     .item.lc {

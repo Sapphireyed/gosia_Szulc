@@ -136,9 +136,9 @@ export function Experience() {
             </div>
           </div>
 
-          <div className="item">
-            <h2><span className="blue">Freelance</span> {isMobile() ? <br></br> : '-'} Javascript Developer</h2>
-            <p>2020 - 2022</p>
+          <div className="item freelance">
+            <h2><span className="blue">Freelance</span> </h2>
+            <p className="date">2020 - 2022</p>
             <Cube />
           </div>
         </Slider>
