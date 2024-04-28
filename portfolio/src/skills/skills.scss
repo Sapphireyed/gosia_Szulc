@@ -1,0 +1,100 @@
+.skillsPage {
+  gap: 14px;
+  position: static;
+  overflow: hidden;
+}
+
+.container .background,
+.container-desktop .background {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(35,35,35);
+  background: linear-gradient(90deg, rgba(35,35,35,1) 5%, transparent 30%, transparent 50%, transparent 70%, rgba(35,35,35,1) 95%);
+  z-index: 9;
+}
+
+.marquee:nth-child(odd) {
+  white-space: nowrap;
+  animation: slide 40s linear infinite;
+}
+
+.marquee:nth-child(even) {
+  white-space: nowrap;
+  animation: slide2 40s linear infinite;
+}
+
+.marquee:nth-child(4) .text,
+.marquee:nth-child(6) .text {
+  font-size: 38px;
+  // background-image: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExem14ajE1Z2F0ejJneG4wZHozNnltdDVsNzBsa3hieXd3c3FwOGN2ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VIzmAi5KS3RyRhY9Sq/giphy.gif');
+  // background-position: center;
+  // color: transparent;
+  // -moz-background-clip: text;
+  // -webkit-background-clip: text;
+}
+
+.marquee:nth-child(3) .text,
+.marquee:nth-child(7) .text {
+  font-size: 28px;
+  color: $yellow
+}
+
+.marquee:nth-child(2) .text,
+.marquee:nth-child(8) .text {
+  color: $blue
+}
+
+.marquee h1 {
+  background-image: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExem14ajE1Z2F0ejJneG4wZHozNnltdDVsNzBsa3hieXd3c3FwOGN2ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VIzmAi5KS3RyRhY9Sq/giphy.gif');
+  background-position: center;
+  color: transparent;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  font-size: 68px !important;
+}
+
+.text {
+  display: inline-block;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-10%);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(-10%);
+  }
+}
+
+@keyframes slide2 {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  50% {
+    transform: translateX(-10%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+@media screen and (min-width: 720px) {
+  .skillsPage {
+    gap: 28px;
+
+    h1 {
+      font-size: 98px !important
+    }
+  }
+}
