@@ -5,8 +5,8 @@ $grey: #242424;
 @import './about/about.scss';
 @import './experience/experience.scss';
 @import './experience/cube.scss';
-@import './game/game.scss';
 @import '../game-copy/game.scss';
+@import './skills/skills.scss';
 
 .hidden {
   display: none !important;
@@ -63,7 +63,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 300px);
   box-shadow: 0 0 20px black;
   border-radius: 12px 12px 0 0;
   position: relative;

@@ -5,7 +5,7 @@ import { About } from './about/about.jsx';
 import { Overlay } from './overlay/overlay.jsx'
 import { Desktop } from './desktop/desktop.jsx';
 import { Experience } from './experience/experience.jsx';
-import { Game } from './game/game.jsx';
+import { Skills } from './skills/skills.jsx';
 import * as fn from './functions.js';
 import './css.scss'
 
@@ -20,7 +20,7 @@ function App() {
     Home: Home,
     About: About,
     Experience: Experience,
-    Game: Game
+    Skills: Skills
   }
 
   return (
