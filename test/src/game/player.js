@@ -1,3 +1,14 @@
+import avatarLImage from './img/avatarLeft.png';
+import avatarRImage from './img/avatarRight.PNG';
+
+const avatarL = new Image();
+avatarL.src = avatarLImage;
+
+const avatarR = new Image();
+avatarR.src = avatarRImage;
+
+let left = null;
+
 class Player {
     constructor(canvas) {
         this.x = canvas.width / 2;
@@ -28,8 +39,10 @@ class Player {
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
             if (deltaX > 0) {
                 this.moveRight(canvas);
+                left = false;
             } else {
                 this.moveLeft();
+                left = true;
             }
         } else {
             if (deltaY > 0) {
@@ -46,7 +59,7 @@ class Player {
         // Optionally, you can add logic here for touch end
     }
 
-    moveLeft() {
+    moveLeft(left) {
         this.x -= 7;
         if (this.x <= 0) {
             this.x = 0;
@@ -61,9 +74,15 @@ class Player {
     }
 
     draw(src, ctx) {
-        const avatar = new Image();
-        avatar.src = src;
-        ctx.drawImage(avatar, this.x, this.y, this.width, this.height);
+        if (left) {
+            ctx.drawImage(avatarL, this.x, this.y, this.width, this.height);
+        } else if (left == false) {
+            ctx.drawImage(avatarR, this.x, this.y, this.width, this.height);
+        } else {
+            const avatar = new Image();
+            avatar.src = src;
+            ctx.drawImage(avatar, this.x, this.y, this.width, this.height);
+        }
     }
 }
 

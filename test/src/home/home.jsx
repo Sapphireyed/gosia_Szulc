@@ -35,12 +35,12 @@ export function Home(props) {
 
             <div className="particles item">
               <span className="block"></span>
-              <h1>Mini game</h1>
+              <h1 onClick={(e) => handleNavItemClick(e, 'Game')}>Mini game</h1>
             </div>
 
             <div className="game item">
               <span className="block"></span>
-              <h1>ME - private</h1>
+              <h1  >ME - private</h1>
             </div>
 
           </div>

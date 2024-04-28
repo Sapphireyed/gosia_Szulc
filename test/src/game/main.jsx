@@ -78,12 +78,12 @@ export function mainGame(canvasRef, replayRef, setGameOver, gameOver) {
 
         if (key === 'ArrowLeft') {
             if (gameover == false) {
-                player.moveLeft()
+                player.moveLeft(left)
                 left = true;
             }
         } else if (key === 'ArrowRight') {
             if (gameover == false) {
-                player.moveRight(canvas)
+                player.moveRight(canvas, left)
                 left = false
             }
         } /*else if (key === 'ArrowUp') {

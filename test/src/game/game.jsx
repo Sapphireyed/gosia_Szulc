@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {mainGame } from './main.jsx'
 
-export function Skills() {
+export function Game() {
   const [gameover, setGameOver] = useState(false);
   const canvasRef = useRef(null);
   const replayRef = useRef(null);
@@ -18,4 +18,3 @@ export function Skills() {
   )
 }
 
-export default Skills;
