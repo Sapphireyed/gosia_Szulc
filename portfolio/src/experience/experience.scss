@@ -1,0 +1,271 @@
+.experiencePage {
+  //background-color: rgba(20, 20, 20, .9);
+
+  .exp-bg {
+    width: 100%;
+    position: absolute;
+    opacity: 0.15;
+  }
+  .item.lc {
+    img {
+      margin-bottom: -18px;
+    }
+  }
+
+  .item {
+    display: flex !important;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+
+    h2 span {
+      color: $blue;
+    }
+
+    h2 span.yellow {
+      color: $yellow;
+    }
+
+    p.synthrone-time-limited {
+      font-size: 12px !important;
+      color: rgba(255, 255, 255, .5)
+    }
+
+    .details {
+      width: 100%;
+      color: rgba(255, 255, 255, .6);
+      font-size: 14px;
+      line-height: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      p {
+        text-align: justify;
+      }
+
+      p:nth-child(odd) span,
+      p:nth-child(even) span {
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+
+      p:nth-child(odd) span {
+        color: $yellow;
+      }
+
+      p:nth-child(even) span {
+        color: $blue;
+      }
+
+      p:hover span {
+        display: inline-block;
+        transform: rotateX(360deg) scale(1.4);
+        transition: 1s;
+      }
+    }
+  }
+}
+
+.slick-slider {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  .slick-prev {
+    display: none !important;
+  }
+
+  .slick-next {
+    display: none !important;
+  }
+
+  .slick-slide {
+    margin: 0 auto;
+    padding: 0;
+    margin-bottom: 50px;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: $yellow;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .experiencePage {
+    img {
+      width: 75%;
+    }
+
+    .item {
+
+      .logo {
+        margin-top: 25px;
+        margin-bottom: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          font-size: 18px;
+          color: white;
+        }
+
+        img {
+          width: 60px;
+        }
+
+        .synthrone-logo {
+          height: 48.58px;
+          width: auto ;
+          margin-right: 10px;;
+        }
+
+        .synthroneP2-logo {
+          height: 18.58px;
+          width: auto !important ;
+        }
+      }
+
+      p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, .6)
+      }
+
+      h2 {
+        font-size: 16px;
+      }
+
+      .details {
+        height: 38vh;
+
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .slick-slider {
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      height: 75vh;
+
+      .slick-track {
+        //transform: translate3d(-860px, 0px, 0px) !important;
+      }
+
+      .slick-slide {
+        //height: 600px;
+        overflow-y: scroll;
+      }
+
+      .slick-dots {
+        bottom: none;
+        top: 92%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .item.freelance {
+    h2 {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap:6px;
+
+      span {
+        font-size: 24px;
+      }
+    }
+
+    p.date {
+      margin-top: -10px;
+    }
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .experiencePage {
+    .item.lc {
+      img {
+        margin-bottom: -68px;
+      }
+    }
+
+    .item {
+      .logo {
+        margin-top: 85px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        height: 78.58px;
+
+        .synthrone-logo {
+          height: 78.58px;
+          width: auto ;
+          margin-right: 15px;
+        }
+
+        .synthroneP2-logo {
+          height: 40px
+        }
+
+        p {
+          font-size: 32px;
+        }
+      }
+    }
+
+    .slick-slider {
+      width: 75vw;
+
+      .slick-prev:before,
+      .slick-next:before {
+        color: darkgray !important;
+      }
+
+      .slick-prev {
+        display: block !important;
+        left: 25px !important;
+        z-index: 999999;
+      }
+
+      .slick-next {
+        display: block !important;
+        right: 25px !important;
+      }
+
+      .slick-slide {
+        margin: 0 auto;
+        padding: 0 48px;
+        margin-bottom: 50px;
+
+        .details {
+          width: 75%;
+          font-size: 16px;
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+
+}
+
+@keyframes scale {
+  0% {
+    margin-left: -6px;
+  }
+  50% {
+    margin-left: 6px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
