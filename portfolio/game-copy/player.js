@@ -7,7 +7,7 @@ avatarL.src = avatarLImage;
 const avatarR = new Image();
 avatarR.src = avatarRImage;
 
-let left = null;
+let left = false;
 
 class Player {
     constructor(canvas) {
@@ -16,16 +16,21 @@ class Player {
         this.width = 58 / 2;
         this.height = 93 / 2;
 
+        // Binding touch event handlers to the instance
+        this.handleTouchStart = this.handleTouchStart.bind(this);
+        this.handleTouchMove = this.handleTouchMove.bind(this);
+        this.handleTouchEnd = this.handleTouchEnd.bind(this);
+
         // Add touch event listeners
-        canvas.addEventListener('touchstart', this.handleTouchStart.bind(this), false);
-        canvas.addEventListener('touchmove', this.handleTouchMove.bind(this), false);
-        canvas.addEventListener('touchend', this.handleTouchEnd.bind(this), false);
+        canvas.addEventListener('touchstart', this.handleTouchStart, false);
+        canvas.addEventListener('touchmove', this.handleTouchMove, false);
+        canvas.addEventListener('touchend', this.handleTouchEnd, false);
     }
 
     // Handle touch start
     handleTouchStart(event) {
+        console.log('touch d=start')
         event.preventDefault();
-        console.log('touch start')
         const touch = event.touches[0];
         this.touchStartX = touch.clientX;
         this.touchStartY = touch.clientY;
@@ -34,35 +39,29 @@ class Player {
     // Handle touch move
     handleTouchMove(event) {
         event.preventDefault();
-        console.log('touch move')
         const touch = event.touches[0];
         const deltaX = touch.clientX - this.touchStartX;
         const deltaY = touch.clientY - this.touchStartY;
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
             if (deltaX > 0) {
                 this.moveRight(canvas);
-                left = false;
             } else {
                 this.moveLeft();
-                left = true;
             }
         } else {
-            if (deltaY > 0) {
-                // Optionally, add moveDown logic if needed
-            } else {
-                // Optionally, add moveUp logic if needed
-            }
+            // Optionally, handle vertical movement here
         }
     }
 
     // Handle touch end
     handleTouchEnd(event) {
         event.preventDefault();
-        // Optionally, you can add logic here for touch end
+        // Optionally, add logic here for touch end
     }
 
     moveLeft() {
         this.x -= 7;
+        left = true;
         if (this.x <= 0) {
             this.x = 0;
         }
@@ -70,6 +69,7 @@ class Player {
 
     moveRight(canvas) {
         this.x += 7;
+        left = false;
         if (this.x + this.width >= canvas.width) {
             this.x = canvas.width - this.width;
         }

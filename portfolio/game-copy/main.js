@@ -1,7 +1,8 @@
 import { Player } from './player.js'
-import { Dot } from './sapphs.js'
+import { dotsArr, obstalesArr, init, initO } from './sapphs.js'
 import { gameoverFn } from './gameover.js'
-import mountainImage from './img/mountain.png';
+
+import mountainImage from './img/mountain1.PNG';
 import avatarLImage from './img/avatarLeft.png';
 import avatarRImage from './img/avatarRight.PNG';
 import logoImage from './img/logo.PNG';
@@ -22,8 +23,10 @@ logo.src = logoImage;
 const stone = new Image();
 stone.src = stoneImage;
 
-export function mainGame(canvasRef, replayRef, setGameOver, gameOver, dotsArr, setDotsArr, obstaclesArr, setObstaclesArr) {
-    let canvas = canvasRef;
+
+export function mainGame() {
+console.log('game')
+    let canvas = document.getElementById('canvas2')
     let ctx = canvas.getContext('2d')
 
     canvas.width = window.innerWidth > 760 ? window.innerWidth * 0.40 : window.innerWidth * 0.8
@@ -55,18 +58,6 @@ export function mainGame(canvasRef, replayRef, setGameOver, gameOver, dotsArr, s
 
     init(canvas)
 
-    function init(canvas) {
-        for (let i = 0; i < 4; i++) {
-            dotsArr.push(new Dot(canvas))
-        }
-    }
-    function initO(canvas) {
-        for (let i = 0; i < 2; i++) {
-            obstaclesArr.push(new Dot(canvas))
-        }
-    }
-
-
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.drawImage(mountain, 0, 0, canvas.width, canvas.height)
@@ -75,12 +66,12 @@ export function mainGame(canvasRef, replayRef, setGameOver, gameOver, dotsArr, s
 
         if (key === 'ArrowLeft') {
             if (gameover == false) {
-                player.moveLeft(left)
+                player.moveLeft()
                 left = true;
             }
         } else if (key === 'ArrowRight') {
             if (gameover == false) {
-                player.moveRight(canvas, left)
+                player.moveRight(canvas)
                 left = false
             }
         } /*else if (key === 'ArrowUp') {
@@ -94,9 +85,9 @@ export function mainGame(canvasRef, replayRef, setGameOver, gameOver, dotsArr, s
             dotsArr[i].update();
             dotsArr[i].draw(logo.src, ctx)
         }
-        for (let i = 0; i < obstaclesArr.length; i++) {
-            obstaclesArr[i].update();
-            obstaclesArr[i].draw(stone.src,ctx)
+        for (let i = 0; i < obstalesArr.length; i++) {
+            obstalesArr[i].update();
+            obstalesArr[i].draw(stone.src,ctx)
         }
         if (!pressed) {
             frame % 32 === 0 ? player.x += 6 : ''
@@ -119,25 +110,22 @@ export function mainGame(canvasRef, replayRef, setGameOver, gameOver, dotsArr, s
         if (frame % 100 == 0) {
             init(canvas)
         }
-        if (frame % 220 == 0) {
+        if (frame % 200 == 0) {
             initO(canvas)
         }
 
     }
     animate()
 
-    let replay = replayRef;
+    let replay = document.getElementById('replay')
     replay.addEventListener('click', replayFn)
     function replayFn() {
-        setGameOver(!gameOver)
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         replay.style.display = 'none'
-        //gameover = false;
+        gameover = false;
         stop = false
         init(canvas)
         score = 0
-        dotsArr = [];
-        obstaclesArr = [];
         player.height = 93 / 2
         player.y = canvas.height - player.height
         animate()
@@ -148,8 +136,8 @@ export function mainGame(canvasRef, replayRef, setGameOver, gameOver, dotsArr, s
             if (dotsArr[i]?.y >= canvas.height) {
                 dotsArr.splice(i, 1)
             }
-            if (dotsArr[i]?.y + 2 > (player.y - player.height) &&
-                ((player.x  > dotsArr[i].x && player.x < dotsArr[i].x + dotsArr[i].width) ||
+            if (dotsArr[i]?.y > (player.y - player.height) &&
+                ((player.x > dotsArr[i].x && player.x < dotsArr[i].x + dotsArr[i].width) ||
                     player.x + player.width > dotsArr[i].x && dotsArr[i].x > player.x)) {
 
                 dotsArr.splice(i, 1)
@@ -157,27 +145,25 @@ export function mainGame(canvasRef, replayRef, setGameOver, gameOver, dotsArr, s
 
             }
         }
+        for (let i = 0; i < obstalesArr.length; i++) {
 
-        for (let i = 0; i < obstaclesArr.length; i++) {
-
-            if (obstaclesArr[i]?.y > (player.y - player.height) &&
-                ((player.x > obstaclesArr[i].x && player.x < obstaclesArr[i].x + obstaclesArr[i].width) ||
-                    player.x + player.width > obstaclesArr[i].x && obstaclesArr[i].x > player.x)) {
-                player.height -= obstaclesArr[i].weight * 2;
-                player.y += obstaclesArr[i].weight * 2;
+            if (obstalesArr[i]?.y > (player.y - player.height) &&
+                ((player.x > obstalesArr[i].x && player.x < obstalesArr[i].x + obstalesArr[i].width) ||
+                    player.x + player.width > obstalesArr[i].x && obstalesArr[i].x > player.x)) {
+                player.height -= obstalesArr[i].weight * 2
+                player.y += obstalesArr[i].weight * 2
                 gameover = true;
                 if (player.height < 6) {
-                    console.log('y')
-                    obstaclesArr.splice(i, 1);
-                    stop = true;
-                    replayFn();
-                    //gameoverFn(gameover, ctx, canvas, score, replayRef)
+                    obstalesArr.splice(i, 1)
+                    stop = true
+                    gameoverFn(gameover, ctx, canvas, score)
                 }
 
             }
-            if (obstaclesArr[i]?.y >= canvas.height) {
-                obstaclesArr.splice(i, 1)
+            if (obstalesArr[i]?.y >= canvas.height) {
+                obstalesArr.splice(i, 1)
             }
         }
     }
 }
+//mainGame()

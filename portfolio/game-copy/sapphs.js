@@ -23,4 +23,23 @@ class Dot {
     }
 }
 
-export { Dot }
+let dotsArr = []
+let obstalesArr = []
+let replay = document.getElementById('replay')
+replay.addEventListener('click', replayFn)
+function replayFn() {
+    dotsArr = []
+    obstalesArr = []
+}
+function init(canvas) {
+    for (let i = 0; i < 4; i++) {
+        dotsArr.push(new Dot(canvas))
+    }
+}
+function initO(canvas) {
+    for (let i = 0; i < 2; i++) {
+        obstalesArr.push(new Dot(canvas))
+    }
+}
+
+export { Dot, init, initO, dotsArr, obstalesArr}

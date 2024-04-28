@@ -7,6 +7,8 @@ export const Overlay = forwardRef(({ setCurrentPage, currentPage }, ref) => {
   function handleBurger(e) {
     e.preventDefault();
     fn.animateOverlay(e, ref, setCurrentPage, 'Homepage');
+    document.querySelector('#canvas2').style.display = 'none';
+    document.querySelector('#canvas2').style.opacity = '0';
   }
 
   return (
