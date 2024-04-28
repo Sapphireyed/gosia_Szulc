@@ -7,10 +7,10 @@ class Dot {
         this.y = 0
         this.width = this.random * 533 / 15 + 20
         this.height =this.random * 465 / 15 + 20
-        this.weight = 4 - this.random * 4 + 0.5
+        this.weight = 2 - this.random * 2 + 0.5
     }
     update() {
-        this.y += this.weight
+        this.y += ( this.weight + this.width ) / 10;
     }
     draw(item, ctx) {
         const sapphire = new Image()
@@ -23,23 +23,4 @@ class Dot {
     }
 }
 
-    let dotsArr = []
-    let obstalesArr = []
-// let replay = replayRef;
-// replay.addEventListener('click', replayFn)
-// function replayFn() {
-//     dotsArr = []
-//     obstalesArr = []
-// }
-function init(canvas) {
-    for (let i = 0; i < 2; i++) {
-        dotsArr.push(new Dot(canvas))
-    }
-}
-function initO(canvas) {
-    for (let i = 0; i < 1; i++) {
-        obstalesArr.push(new Dot(canvas))
-    }
-}
-
-export { Dot, init, initO, dotsArr, obstalesArr}
+export { Dot }

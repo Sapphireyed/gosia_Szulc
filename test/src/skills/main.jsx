@@ -1,7 +1,7 @@
 import { Player } from './player.js'
-import { dotsArr, obstalesArr, init, initO } from './sapphs.js'
+import { Dot } from './sapphs.js'
 import { gameoverFn } from './gameover.js'
-import mountainImage from './img/mountain.PNG';
+import mountainImage from './img/mountain.png';
 import avatarLImage from './img/avatarLeft.png';
 import avatarRImage from './img/avatarRight.PNG';
 import logoImage from './img/logo.PNG';
@@ -22,13 +22,15 @@ logo.src = logoImage;
 const stone = new Image();
 stone.src = stoneImage;
 
-export function mainGame(canvasRef, replayRef) {
-console.log('main game')
+export function mainGame(canvasRef, replayRef, setGameOver, gameOver) {
+    let dotsArr = []
+    let obstalesArr = []
+
     let canvas = canvasRef;
     let ctx = canvas.getContext('2d')
 
-    canvas.width = window.innerWidth * 0.30
-    canvas.height = window.innerHeight
+    canvas.width = window.innerWidth > 760 ? window.innerWidth * 0.40 : window.innerWidth * 0.8
+    canvas.height = window.innerHeight * 0.7
 
     let frame = 0;
     let score = 0;
@@ -56,12 +58,21 @@ console.log('main game')
 
     init(canvas)
 
+    function init(canvas) {
+        for (let i = 0; i < 4; i++) {
+            dotsArr.push(new Dot(canvas))
+        }
+    }
+    function initO(canvas) {
+        for (let i = 0; i < 2; i++) {
+            obstalesArr.push(new Dot(canvas))
+        }
+    }
+
+
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.drawImage(mountain, 0, 0, canvas.width, canvas.height)
-        //ctx.rect(0, 0, canvas.width, canvas.height)
-        ctx.color= 'green';
-        ctx.fill='green'
 
         left == false ? player.draw(avatarR.src, ctx) : player.draw(avatarL.src, ctx)
 
@@ -108,11 +119,11 @@ console.log('main game')
         }
         requestAnimationFrame(animate)
         frame++
-        if (frame % 200 == 0) {
-            init(canvas, replayRef)
+        if (frame % 100 == 0) {
+            init(canvas)
         }
-        if (frame % 380 == 0) {
-            initO(canvas, replayRef)
+        if (frame % 220 == 0) {
+            initO(canvas)
         }
 
     }
@@ -121,12 +132,15 @@ console.log('main game')
     let replay = replayRef;
     replay.addEventListener('click', replayFn)
     function replayFn() {
+        setGameOver(!gameOver)
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         replay.style.display = 'none'
         gameover = false;
         stop = false
         init(canvas)
         score = 0
+        dotsArr = [];
+        obstalesArr = [];
         player.height = 93 / 2
         player.y = canvas.height - player.height
         animate()
@@ -134,10 +148,10 @@ console.log('main game')
 
     function collisionDots() {
         for (let i = 0; i < dotsArr.length; i++) {
-            if (dotsArr[i].y >= canvas.height) {
+            if (dotsArr[i]?.y >= canvas.height) {
                 dotsArr.splice(i, 1)
             }
-            if (dotsArr[i].y > (player.y - player.height) &&
+            if (dotsArr[i]?.y > (player.y - player.height) &&
                 ((player.x > dotsArr[i].x && player.x < dotsArr[i].x + dotsArr[i].width) ||
                     player.x + player.width > dotsArr[i].x && dotsArr[i].x > player.x)) {
 
@@ -148,7 +162,7 @@ console.log('main game')
         }
         for (let i = 0; i < obstalesArr.length; i++) {
 
-            if (obstalesArr[i].y > (player.y - player.height) &&
+            if (obstalesArr[i]?.y > (player.y - player.height) &&
                 ((player.x > obstalesArr[i].x && player.x < obstalesArr[i].x + obstalesArr[i].width) ||
                     player.x + player.width > obstalesArr[i].x && obstalesArr[i].x > player.x)) {
                 player.height -= obstalesArr[i].weight * 2
@@ -157,11 +171,12 @@ console.log('main game')
                 if (player.height < 3) {
                     obstalesArr.splice(i, 1)
                     stop = true
-                    gameoverFn(gameover, ctx, canvas, score)
+                    replayFn()
+                    //gameoverFn(gameover, ctx, canvas, score, replayRef)
                 }
 
             }
-            if (obstalesArr[i].y >= canvas.height) {
+            if (obstalesArr[i]?.y >= canvas.height) {
                 obstalesArr.splice(i, 1)
             }
         }

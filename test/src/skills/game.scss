@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-#canvas1 {
+#canvas-game {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -15,8 +15,9 @@
   color: green;
   position: absolute;
   background-color: transparent;
-  top: 55%;
-  left: 50%;
+  top: 60%;
+  left: 47%;
+  display: none;
   font-size: 20px;
   transform: translateX(-50%);
   z-index: 1;
