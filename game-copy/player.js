@@ -38,6 +38,7 @@ class Player {
 
     // Handle touch move
     handleTouchMove(event) {
+        let canvas = document.getElementById('canvas2')
         event.preventDefault();
         const touch = event.touches[0];
         const deltaX = touch.clientX - this.touchStartX;

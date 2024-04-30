@@ -102,7 +102,7 @@ console.log('game')
             frame % 32 === 16 ? player.x -= 6 : ''
         }
         //ctx.fillStyle = 'white';
-        ctx.font = '60px Georgia'
+        ctx.font = window.innerWidth > 760 ? '60px Georgia' : '40px Georgia'
         ctx.lineWidth = '5px'
         ctx.strokeText(score, canvas.width - 100, 60)
         ctx.fillStyle = '#35b5fd'
