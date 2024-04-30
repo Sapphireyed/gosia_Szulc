@@ -3,8 +3,9 @@ import qlImg from './freelance/img/questlands.png'
 import jobmaniaImg from './freelance/img/jobmania.png'
 import raImg from './freelance/img/rogue.png'
 import kanc from './freelance/img/kanc.png';
+import replay from '../assets/replay.svg';
 import { changeProjects } from './freelance/work/changeProject.jsx';
-import { jobmania, raPics, qlPics, kancPics, allPics } from './freelance/work/projectsImgs';
+import { jobmania, raPics, qlPics, kancPics, allPics } from './freelance/work/projectsImgs.js';
 
 export function Cube() {
   const [restarted, setRestarted] = useState(true);
@@ -127,11 +128,11 @@ function handleRadio(ref, e) {
             </div>
 
             <div className="cube_face top animatedSide" onClick={() => toOriginalState()}>
-              {restarted ? '' : 'RESTART' }
+              {restarted ? '' : <img src={replay} /> }
             </div>
 
             <div className="cube_face bottom animatedSide" onClick={() => toOriginalState()}>
-              {restarted ? '' : 'RESTART' }
+              {restarted ? '' : <img src={replay} /> }
             </div>
           </div>
         </div>
