@@ -232,6 +232,12 @@
     }
   }
 
+  .top img,
+  .bottom img {
+    width: 200px;
+    margin: auto;
+  }
+
   .cube.show-front {
     transform: translateZ(-100px) rotateY( 0deg);
   }

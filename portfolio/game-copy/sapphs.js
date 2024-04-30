@@ -24,22 +24,27 @@ class Dot {
 }
 
 let dotsArr = []
+let greenArr =[]
 let obstalesArr = []
 let replay = document.getElementById('replay')
 replay.addEventListener('click', replayFn)
 function replayFn() {
     dotsArr = []
     obstalesArr = []
+    greenArr = []
 }
 function init(canvas) {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 1; i++) {
         dotsArr.push(new Dot(canvas))
     }
+    for (let i = 0; i < 3; i++) {
+        greenArr.push(new Dot(canvas))
+    }
 }
-function initO(canvas) {
-    for (let i = 0; i < 2; i++) {
+function initO(canvas, score) {
+    for (let i = 0; i < Math.floor(score / 10) + 1; i++) {
         obstalesArr.push(new Dot(canvas))
     }
 }
 
-export { Dot, init, initO, dotsArr, obstalesArr}
+export { Dot, init, initO, dotsArr, greenArr, obstalesArr}
