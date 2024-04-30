@@ -1,5 +1,5 @@
 import { Player } from './player.js'
-import { dotsArr, obstalesArr, init, initO } from './sapphs.js'
+import { dotsArr, obstalesArr, greenArr, init, initO } from './sapphs.js'
 import { gameoverFn } from './gameover.js'
 
 import mountainImage from './img/mountain1.PNG';
@@ -7,6 +7,7 @@ import avatarLImage from './img/avatarLeft.png';
 import avatarRImage from './img/avatarRight.PNG';
 import logoImage from './img/logo.PNG';
 import stoneImage from './img/stone.PNG';
+import stoneGreenImage from './img/rocks_ornament/rock2.png';
 
 const mountain = new Image();
 mountain.src = mountainImage;
@@ -22,6 +23,9 @@ logo.src = logoImage;
 
 const stone = new Image();
 stone.src = stoneImage;
+
+const stoneGreen = new Image();
+stoneGreen.src = stoneGreenImage;
 
 
 export function mainGame() {
@@ -85,6 +89,10 @@ console.log('game')
             dotsArr[i].update();
             dotsArr[i].draw(logo.src, ctx)
         }
+        for (let i = 0; i < greenArr.length; i++) {
+            greenArr[i].update();
+            greenArr[i].draw(stoneGreen.src, ctx)
+        }
         for (let i = 0; i < obstalesArr.length; i++) {
             obstalesArr[i].update();
             obstalesArr[i].draw(stone.src,ctx)
@@ -99,7 +107,7 @@ console.log('game')
         ctx.strokeText(score, canvas.width - 100, 60)
         ctx.fillStyle = '#35b5fd'
         ctx.fillText(score, canvas.width - 100, 60)
-
+        ctx.fillText('Level: ' + (Math.floor(score / 10) + 1), 0, 60)
 
         collisionDots()
         if (stop == true) {
@@ -111,7 +119,7 @@ console.log('game')
             init(canvas)
         }
         if (frame % 200 == 0) {
-            initO(canvas)
+            initO(canvas,score)
         }
 
     }
@@ -141,10 +149,23 @@ console.log('game')
                     player.x + player.width > dotsArr[i].x && dotsArr[i].x > player.x)) {
 
                 dotsArr.splice(i, 1)
-                score++
+                score += 2;
 
             }
         }
+        for (let i = 0; i < greenArr.length; i++) {
+            if (greenArr[i]?.y >= canvas.height) {
+                greenArr.splice(i, 1)
+            }
+            if (greenArr[i]?.y > (player.y - player.height) &&
+                ((player.x > greenArr[i].x && player.x < greenArr[i].x + greenArr[i].width) ||
+                    player.x + player.width > greenArr[i].x && greenArr[i].x > player.x)) {
+
+                greenArr.splice(i, 1)
+                score++;
+            }
+        }
+
         for (let i = 0; i < obstalesArr.length; i++) {
 
             if (obstalesArr[i]?.y > (player.y - player.height) &&
@@ -153,7 +174,7 @@ console.log('game')
                 player.height -= obstalesArr[i].weight * 2
                 player.y += obstalesArr[i].weight * 2
                 gameover = true;
-                if (player.height < 6) {
+                if (player.height < 9) {
                     obstalesArr.splice(i, 1)
                     stop = true
                     gameoverFn(gameover, ctx, canvas, score)
