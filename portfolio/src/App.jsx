@@ -6,6 +6,7 @@ import { Overlay } from './overlay/overlay.jsx'
 import { Desktop } from './desktop/desktop.jsx';
 import { Experience } from './experience/experience.jsx';
 import { Skills } from './skills/skills.jsx';
+import { Priv } from './priv/priv.jsx';
 import * as fn from './functions.js';
 import './css.scss'
 
@@ -20,7 +21,9 @@ function App() {
     Home: Home,
     About: About,
     Experience: Experience,
-    Skills: Skills
+    Skills: Skills,
+    Priv: Priv,
+    Particles: Priv
   }
 
   return (
