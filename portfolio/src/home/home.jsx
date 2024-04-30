@@ -40,7 +40,7 @@ export function Home(props) {
 
             <div className="particles item">
               <span className="block"></span>
-              <h1>Particles</h1>
+              <h1 onClick={(e) => {handleNavItemClick(e, 'Particles')}} >Particles</h1>
             </div>
 
             <div className="game item">
@@ -50,7 +50,7 @@ export function Home(props) {
 
             <div className="private item">
               <span className="block"></span>
-              <h1 >ME - private</h1>
+              <h1 onClick={(e) => {handleNavItemClick(e, 'Priv')}} >ME - private</h1>
             </div>
 
           </div>
