@@ -188,3 +188,25 @@ console.log('game')
     }
 }
 //mainGame()
+
+function forceVariant(expId, variationId) {
+    const abtastyCookie = ('; '+document.cookie)?.split(`; ABTasty=`)?.pop()?.split(';')?.[0];
+    const abtastyCookieArr = abtastyCookie?.split('&');
+    let experiment = abtastyCookie?.split('&').find(v => v.includes('th'));
+    const index = abtastyCookieArr?.indexOf(experiment);
+    let experimentArr = experiment?.split(expId)
+
+    let specificExp = experiment?.split(`${expId}.`)?.[1];
+    const specificExpArr = specificExp?.split('.');
+    specificExpArr?.shift()
+    specificExpArr?.unshift(variationId);
+    specificExp = specificExpArr?.join('.');
+    experiment = experimentArr.length > 2 ?
+        experimentArr?.[0] + expId + '_' + expId + '.' + specificExp :
+        experimentArr?.[0] + expId + '.' + specificExp;
+    abtastyCookieArr[index] = experiment;
+    const newCookie = abtastyCookieArr?.join('&');
+    document.cookie = 'ABTasty=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.tipico.de;';
+    document.cookie = `ABTasty=${newCookie}; path=/; domain=.tipico.de;`;
+    window.location.reload();
+}

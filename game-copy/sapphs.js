@@ -10,7 +10,7 @@ class Dot {
         this.weight = 2 - this.random * 2 + 0.5
     }
     update() {
-        this.y += ( this.weight + this.width ) / 12;
+        this.y += ( this.weight + this.width ) / 10;
     }
     draw(item, ctx) {
         const sapphire = new Image()
