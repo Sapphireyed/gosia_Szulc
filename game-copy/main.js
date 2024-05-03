@@ -29,7 +29,6 @@ stoneGreen.src = stoneGreenImage;
 
 
 export function mainGame() {
-console.log('game')
     let canvas = document.getElementById('canvas2')
     let ctx = canvas.getContext('2d')
 
