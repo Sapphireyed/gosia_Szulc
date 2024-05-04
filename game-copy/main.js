@@ -62,6 +62,7 @@ export function mainGame() {
     init(canvas)
 
     function animate() {
+        console.log('animation running')
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.drawImage(mountain, 0, 0, canvas.width, canvas.height)
 
@@ -109,16 +110,18 @@ export function mainGame() {
         ctx.fillText('Level: ' + (Math.floor(score / 10) + 1), 0, 60)
 
         collisionDots()
-        if (stop == true) {
-            return
-        }
-        requestAnimationFrame(animate)
+
+        const startAnimation = requestAnimationFrame(animate)
         frame++
         if (frame % 100 == 0) {
             init(canvas)
         }
         if (frame % 200 == 0) {
             initO(canvas,score)
+        }
+        if (stop == true || sessionStorage.getItem('gszulc_animation') === 'stopped') {
+            cancelAnimationFrame(startAnimation);
+            return
         }
 
     }

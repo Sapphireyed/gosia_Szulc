@@ -8,11 +8,14 @@ export function Home(props) {
     document.querySelector('#canvas1').classList.add('hidden');
 
     if (name === 'Game') {
+      sessionStorage.setItem('gszulc_animation', 'running');
       setTimeout(() => {
         document.querySelector('#canvas2').style.display = 'block';
         document.querySelector('#canvas2').style.opacity = '1';
         mainGame()
       }, 1000);
+    } else {
+      sessionStorage.setItem('gszulc_animation', 'stopped');
     }
 
     fn.animateOverlay(e, overlayRef, setCurrentPage, name);
