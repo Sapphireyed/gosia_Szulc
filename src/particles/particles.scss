@@ -1,0 +1,36 @@
+.particles-section {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 310px;
+  width: calc(100% - 300px);
+  height: calc(100% - 25vh);
+  display: none;
+
+  .move-animation {
+    .color {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    #favcolor {
+      border: none;
+      background: transparent;
+    }
+
+    .color-rainbow,
+    form {
+      box-shadow: 2px 2px black;
+      width: fit-content;
+      padding: 3px 5px
+    }
+
+    label,
+    .color-rainbow {
+      cursor: pointer;
+      color: white
+    }
+  }
+}

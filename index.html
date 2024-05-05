@@ -19,8 +19,22 @@
         <script type="module" src="./game-copy/gameover.js"></script>
         <script type="module" src="./game-copy/main.js"></script>
     </div>
-    <script  type="module" src="./src/interactiveText.js"></script>
 
+    <div class="particles-section">
+      <div class="move-animation">
+        <div class="color">
+          <form action="/action_page.php">
+            <label for="favcolor">Change color: </label>
+            <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+          </form>
+          <div class="color-rainbow">Choose Rainbow</div>
+        </div>
+        <canvas id="canvas-move"></canvas>
+        <script type="module" src="./src/particles/particles.js"></script>
+      </div>
+    </div>
+
+    <script  type="module" src="./src/interactiveText.js"></script>
     <script type="module" src="./main.jsx"></script>
   </body>
 </html>
