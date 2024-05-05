@@ -1,5 +1,6 @@
 import * as fn from '../functions.js';
 import { mainGame } from '../../game-copy/main.js';
+import { prticlesMove } from '../particles/particles.js';
 
 export function Home(props) {
   const { overlayRef, currentPage, setCurrentPage } = props;
@@ -16,6 +17,17 @@ export function Home(props) {
       }, 1000);
     } else {
       sessionStorage.setItem('gszulc_animation', 'stopped');
+    }
+
+    if (name === 'Particles') {
+      sessionStorage.setItem('animation-move', 'running');
+      setTimeout(() => {
+        document.querySelector('.particles-section').style.display = 'block';
+        prticlesMove();
+      }, 1000);
+    } else {
+      document.querySelector('.particles-section').style.display = 'none';
+      sessionStorage.setItem('animation-move', 'stopped');
     }
 
     fn.animateOverlay(e, overlayRef, setCurrentPage, name);
