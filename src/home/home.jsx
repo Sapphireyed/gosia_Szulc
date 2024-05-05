@@ -20,13 +20,11 @@ export function Home(props) {
     }
 
     if (name === 'Particles') {
-      if (window.innerWidth >= 760) {
-        sessionStorage.setItem('animation-move', 'running');
-        setTimeout(() => {
-          document.querySelector('.particles-section').style.display = 'block';
-          prticlesMove();
-        }, 1000);
-      }
+      sessionStorage.setItem('animation-move', 'running');
+      setTimeout(() => {
+        document.querySelector('.particles-section').style.display = 'block';
+        prticlesMove();
+      }, 1000);
     } else {
       document.querySelector('.particles-section').style.display = 'none';
       sessionStorage.setItem('animation-move', 'stopped');

@@ -17,23 +17,37 @@ export function prticlesMove() {
     canvas.height = window.innerHeight;
   })
 
-  const mouse = {
-    x: undefined,
-    y: undefined
-  }
+  const getTouchPos = (event) => {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: event.touches[0].clientX - rect.left,
+      y: event.touches[0].clientY - rect.top
+    };
+  };
 
   canvas.addEventListener('mousemove', (event) => {
-    mouse.x = event.x - 300;
-    mouse.y = event.y - 250;
+    const mouse = {
+      x: event.x - 300,
+      y: event.y - 250
+    };
+    createParticles(mouse);
+  });
+
+  canvas.addEventListener('touchmove', (event) => {
+    const touch = getTouchPos(event);
+    createParticles(touch);
+  });
+
+  function createParticles(position) {
     for (let i = 0; i < 10; i++) {
-      particlesArray.push(new Particle());
+      particlesArray.push(new Particle(position.x, position.y));
     }
-  })
+  }
 
   class Particle {
-    constructor() {
-      this.x = mouse.x;
-      this.y = mouse.y;
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
       this.size = Math.random() * 15;
       this.speedX = Math.random() * 5 - 0.2;
       this.speedY = Math.random() * 5 - 0.2;
