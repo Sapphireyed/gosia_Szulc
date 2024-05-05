@@ -17,12 +17,15 @@ function App() {
     firstRun: true
   });
 
+  const particles = window.innerWidth < 760 ? Priv : ''
+
   const pages = {
     Home: Home,
     About: About,
     Experience: Experience,
     Skills: Skills,
     Priv: Priv,
+    Particles: particles
   }
 
   return (
