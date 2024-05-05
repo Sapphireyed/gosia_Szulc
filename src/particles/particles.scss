@@ -35,6 +35,20 @@
   }
 }
 
-// @media screen and (min-width: 760px) {
-//   .particles-section { display: none !important }
-// }
+@media screen and (max-width: 760px) {
+  .particles-section {
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: calc(100% - 25vh);
+
+    .move-animation {
+      height: 100%;
+
+      canvas {
+        height: 85%;
+        width: 100%;
+      }
+    }
+   }
+}

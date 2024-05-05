@@ -25,7 +25,6 @@ function App() {
     Experience: Experience,
     Skills: Skills,
     Priv: Priv,
-    Particles: particles
   }
 
   return (
