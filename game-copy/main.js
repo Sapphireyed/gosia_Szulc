@@ -62,7 +62,6 @@ export function mainGame() {
     init(canvas)
 
     function animate() {
-        console.log('animation running')
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.drawImage(mountain, 0, 0, canvas.width, canvas.height)
 
