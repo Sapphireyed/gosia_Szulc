@@ -77,12 +77,7 @@ export function mainGame() {
                 player.moveRight(canvas)
                 left = false
             }
-        } /*else if (key === 'ArrowUp') {
-        player.moveUp()
-    } else if (key === 'ArrowDown') {
-        player.moveDown()
-    }*/
-
+        }
 
         for (let i = 0; i < dotsArr.length; i++) {
             dotsArr[i].update();
@@ -100,7 +95,7 @@ export function mainGame() {
             frame % 32 === 0 ? player.x += 6 : ''
             frame % 32 === 16 ? player.x -= 6 : ''
         }
-        //ctx.fillStyle = 'white';
+
         ctx.font = window.innerWidth > 760 ? '60px Georgia' : '40px Georgia'
         ctx.lineWidth = '5px'
         ctx.strokeText(score, canvas.width - 100, 60)
@@ -187,27 +182,4 @@ export function mainGame() {
             }
         }
     }
-}
-//mainGame()
-
-function forceVariant(expId, variationId) {
-    const abtastyCookie = ('; '+document.cookie)?.split(`; ABTasty=`)?.pop()?.split(';')?.[0];
-    const abtastyCookieArr = abtastyCookie?.split('&');
-    let experiment = abtastyCookie?.split('&').find(v => v.includes('th'));
-    const index = abtastyCookieArr?.indexOf(experiment);
-    let experimentArr = experiment?.split(expId)
-
-    let specificExp = experiment?.split(`${expId}.`)?.[1];
-    const specificExpArr = specificExp?.split('.');
-    specificExpArr?.shift()
-    specificExpArr?.unshift(variationId);
-    specificExp = specificExpArr?.join('.');
-    experiment = experimentArr.length > 2 ?
-        experimentArr?.[0] + expId + '_' + expId + '.' + specificExp :
-        experimentArr?.[0] + expId + '.' + specificExp;
-    abtastyCookieArr[index] = experiment;
-    const newCookie = abtastyCookieArr?.join('&');
-    document.cookie = 'ABTasty=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.tipico.de;';
-    document.cookie = `ABTasty=${newCookie}; path=/; domain=.tipico.de;`;
-    window.location.reload();
 }
