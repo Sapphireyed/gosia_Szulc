@@ -169,7 +169,7 @@ export function mainGame() {
                     player.x + player.width > obstalesArr[i].x && obstalesArr[i].x > player.x)) {
                 //player.height -= obstalesArr[i].weight * 2
                 //player.y += obstalesArr[i].weight * 2
-                player.heigh--
+                player.height--
                 gameover = true;
                 if (player.height < 12) {
                     obstalesArr.splice(i, 1)
