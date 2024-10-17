@@ -167,10 +167,11 @@ export function mainGame() {
             if (obstalesArr[i]?.y > (player.y - player.height) &&
                 ((player.x > obstalesArr[i].x && player.x < obstalesArr[i].x + obstalesArr[i].width) ||
                     player.x + player.width > obstalesArr[i].x && obstalesArr[i].x > player.x)) {
-                player.height -= obstalesArr[i].weight * 2
-                player.y += obstalesArr[i].weight * 2
+                //player.height -= obstalesArr[i].weight * 2
+                //player.y += obstalesArr[i].weight * 2
+                player.heigh--
                 gameover = true;
-                if (player.height < 9) {
+                if (player.height < 12) {
                     obstalesArr.splice(i, 1)
                     stop = true
                     gameoverFn(gameover, ctx, canvas, score)
